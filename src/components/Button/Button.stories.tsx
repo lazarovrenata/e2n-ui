@@ -11,10 +11,11 @@ export default {
   },
 } as ComponentMeta<typeof Button>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof Button> = (args) => (
+  <Button {...args}>Click me</Button>
+);
 
 export const Basic = Template.bind({});
 Basic.args = {
   variant: 'primary',
-  label: 'Button',
 };

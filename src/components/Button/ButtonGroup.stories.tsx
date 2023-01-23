@@ -1,3 +1,8 @@
+import {
+  faChevronLeft,
+  faChevronRight,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Button } from './Button';
 
@@ -8,12 +13,16 @@ export default {
   component: ButtonGroup,
 } as ComponentMeta<typeof ButtonGroup>;
 
-const Template: ComponentStory<typeof ButtonGroup> = () => (
-  <ButtonGroup>
-    <Button label="Button 1" fill="outline" />
-    <Button label="Button 2" fill="outline" />
-    <Button label="Button 3" fill="outline" />
-  </ButtonGroup>
-);
-
-export const Basic = Template.bind({});
+export const Basic = () => {
+  return (
+    <ButtonGroup>
+      <Button fill="outline">
+        <FontAwesomeIcon icon={faChevronLeft} />
+      </Button>
+      <Button fill="outline">Heute</Button>
+      <Button fill="outline">
+        <FontAwesomeIcon icon={faChevronRight} />
+      </Button>
+    </ButtonGroup>
+  );
+};

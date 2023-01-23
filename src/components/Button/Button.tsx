@@ -1,5 +1,5 @@
 import { css, CSSObject, cx } from '@emotion/css';
-import { ButtonHTMLAttributes, forwardRef } from 'react';
+import { ButtonHTMLAttributes, forwardRef, ReactNode } from 'react';
 import { colorPalette, theme } from '../../theme/default';
 
 type ButtonFill = 'outline';
@@ -13,7 +13,7 @@ type CustomProps = {
   className?: string;
   size?: ButtonSize;
   variant?: ButtonVariant;
-  label: string;
+  children?: ReactNode | string;
 };
 
 export type ButtonProps = CustomProps & ButtonHTMLAttributes<HTMLButtonElement>;
@@ -71,7 +71,7 @@ export const getButtonStyles = ({
       display: 'inline-flex',
       alignItems: 'center',
       width: 'fit-content',
-      height: 'fit-content',
+      // height: 'fit-content',
       fontSize: size
         ? size === 'small'
           ? theme.size.sm
@@ -121,7 +121,10 @@ function getButtonVariantStyles({
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ fill, className, size, disabled, variant, label, ...otherProps }, ref) => {
+  (
+    { fill, className, size, disabled, variant, children, ...otherProps },
+    ref,
+  ) => {
     const styles = getButtonStyles({ fill, size, disabled, variant });
 
     return (
@@ -129,7 +132,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         className={cx('e2n-button', styles.button, className)}
         {...otherProps}>
-        {label}
+        {children}
       </button>
     );
   },
