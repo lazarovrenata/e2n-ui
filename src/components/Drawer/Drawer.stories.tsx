@@ -13,7 +13,7 @@ export const Default = () => {
 
   return (
     <div className="app">
-      <Button label="Öffnen" onClick={() => setIsOpen(!isOpen)} />
+      <Button onClick={() => setIsOpen(!isOpen)}>Öffnen</Button>
       <Drawer
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
@@ -21,7 +21,7 @@ export const Default = () => {
         enableDismiss={true}
         footer={
           <div className="d-flex justify-content-end">
-            <Button label="Speichern" />
+            <Button>Speichern</Button>
           </div>
         }
         position="right">

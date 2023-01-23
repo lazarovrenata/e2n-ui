@@ -2,7 +2,7 @@ import { Button } from './Button';
 
 describe('button component', () => {
   it('renders', () => {
-    cy.mount(<Button label="Click me" />);
+    cy.mount(<Button>Click me</Button>);
     cy.get('button').should('contain.text', 'Hello');
   });
 });

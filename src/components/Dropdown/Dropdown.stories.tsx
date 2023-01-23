@@ -15,7 +15,7 @@ export const Default: Story = () => {
       content={<div>Dropdown content</div>}
       isOpen={isOpen}
       setIsOpen={setIsOpen}>
-      <Button label="Show dropdown" />
+      <Button>Dropdown öffnen </Button>
     </Dropdown>
   );
 };

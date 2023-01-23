@@ -14,7 +14,7 @@ export const Default = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <Button onClick={() => setIsOpen(true)} label="Open Dialog" />
+      <Button onClick={() => setIsOpen(true)}>Open Dialog</Button>
       {isOpen && (
         <OverlayContainer>
           <ModalDialog
@@ -39,12 +39,10 @@ export const Default = () => {
                   justifyContent: 'end',
                   gap: theme.spacing.md,
                 }}>
-                <Button
-                  fill="outline"
-                  onClick={() => setIsOpen(false)}
-                  label="Abbrechen"
-                />
-                <Button label="Löschen" />
+                <Button fill="outline" onClick={() => setIsOpen(false)}>
+                  Abbrechen
+                </Button>
+                <Button>Löschen</Button>
               </div>
             </div>
           </ModalDialog>
