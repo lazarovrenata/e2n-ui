@@ -14,3 +14,7 @@ const options: Array<{ value: string; label: string }> = [
 export const Default = () => <Select options={options} label="Label" />;
 
 export const Multi = () => <Select isMulti options={options} />;
+
+export const MultiWithAnimation = () => (
+  <Select isMulti options={options} isAnimated />
+);

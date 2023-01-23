@@ -2,6 +2,7 @@ import { css, cx } from '@emotion/css';
 import { useMemo } from 'react';
 import Select, { GroupBase, Props, StylesConfig } from 'react-select';
 import { colorPalette, theme } from '../../theme/default';
+import makeAnimated from 'react-select/animated';
 
 function getStyles() {
   return {
@@ -30,9 +31,12 @@ export function CustomSelect<
   components,
   styles: customStyles,
   label,
+  isAnimated,
   ...otherProps
-}: Props<Option, IsMulti, Group> & { label?: string }) {
+}: Props<Option, IsMulti, Group> & { label?: string; isAnimated?: boolean }) {
   const customSelectStyles = getStyles();
+
+  const animatedComponents = isAnimated ? makeAnimated() : undefined;
 
   const styles: StylesConfig<Option, IsMulti, Group> = useMemo(() => {
     return {
@@ -93,6 +97,7 @@ export function CustomSelect<
       <Select
         components={{
           ...components,
+          ...animatedComponents,
           IndicatorSeparator,
         }}
         styles={{ ...styles, ...customStyles }}
