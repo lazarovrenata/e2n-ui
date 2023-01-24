@@ -1,15 +1,17 @@
-import { ColumnDef as ReactTableColumnDef } from '@tanstack/react-table';
-import { SortingState as ReactTableSortingState } from '@tanstack/react-table';
-import { Row as ReactTableRow } from '@tanstack/react-table';
-import { PaginationState as ReactTablePaginationState } from '@tanstack/react-table';
+import {
+  ColumnDef,
+  ExpandedState,
+  PaginationState,
+  Row,
+  SortingState,
+} from '@tanstack/react-table';
 
-export type ColumnDef<TData, TValue = unknown> = ReactTableColumnDef<
-  TData,
-  TValue
->;
+export type TableColumnDef<TData, TValue = unknown> = ColumnDef<TData, TValue>;
 
-export type SortingState = ReactTableSortingState;
+export type TableSortingState = SortingState;
 
-export type Row<TData> = ReactTableRow<TData>;
+export type TableRow<TData> = Row<TData>;
 
-export type PaginationState = ReactTablePaginationState;
+export type TablePaginationState = PaginationState;
+
+export type TableExpandendState = ExpandedState;

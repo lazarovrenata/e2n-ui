@@ -2,7 +2,7 @@
   "name": "e2n-ui",
   "license": "MIT",
   "private": false,
-  "version": "1.0.2",
+  "version": "1.0.4",
   "type": "commonjs",
   "scripts": {
     "dev": "vite",
@@ -42,6 +42,7 @@
     "react-popper": "^2.3.0",
     "react-router-dom": "^6.7.0",
     "react-select": "^5.7.0",
+    "react-stately": "^3.20.0",
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
