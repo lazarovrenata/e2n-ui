@@ -1,24 +1,14 @@
 import { css, cx } from '@emotion/css';
-import { HTMLAttributes, ReactNode, useRef } from 'react';
-import {
-  useOverlay,
-  AriaOverlayProps,
-  usePreventScroll,
-  useModal,
-  useDialog,
-  AriaDialogProps,
-} from 'react-aria';
+import { ReactNode } from 'react';
+import { usePreventScroll } from 'react-aria';
 import { colorPalette, theme } from '../../theme/default';
 
-type CustomProps = {
+export type ModalDialogProps = {
   title: string;
   children: string | ReactNode;
+  onClose: (isOpen: boolean) => void;
+  isDismissable?: boolean;
 };
-
-type ModalDialogProps = CustomProps &
-  HTMLAttributes<HTMLDivElement> &
-  AriaOverlayProps &
-  AriaDialogProps;
 
 function getStyles() {
   return {
@@ -50,27 +40,27 @@ function getStyles() {
   };
 }
 
-export function ModalDialog(props: ModalDialogProps) {
+export function ModalDialog({
+  title,
+  children,
+  onClose,
+  isDismissable = false,
+  ...otherProps
+}: ModalDialogProps) {
   const styles = getStyles();
-  const { title, children, ...otherProps } = props;
-  const ref = useRef(null);
-  const { overlayProps, underlayProps } = useOverlay(props, ref);
-
   usePreventScroll();
-  const { modalProps } = useModal();
-  const { dialogProps, titleProps } = useDialog(props, ref);
 
   return (
-    <div className={cx(styles.overlay)} {...underlayProps} {...otherProps}>
-      <div
-        className={cx(styles.modal)}
-        {...overlayProps}
-        {...dialogProps}
-        {...modalProps}
-        ref={ref}>
-        <div className={cx(styles.titel)} {...titleProps}>
-          {title}
-        </div>
+    <div
+      className={cx(styles.overlay)}
+      {...otherProps}
+      onClick={() => {
+        if (isDismissable) {
+          onClose(false);
+        }
+      }}>
+      <div className={cx(styles.modal)}>
+        <div className={cx(styles.titel)}>{title}</div>
         {children}
       </div>
     </div>
