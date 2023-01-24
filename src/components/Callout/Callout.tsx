@@ -18,22 +18,22 @@ type CustomProps = {
 
 export type CalloutProps = CustomProps & HTMLAttributes<HTMLDivElement>;
 
-const calloutColor = {
+export const calloutColor = {
   success: colorPalette.green,
   error: colorPalette.red,
 };
 
-const calloutBackgroundColor = {
+export const calloutBackgroundColor = {
   success: colorPalette.lightGreen,
   error: colorPalette.lightRed,
 };
 
-const calloutIcon = {
+export const calloutIcon = {
   success: faCheckCircle,
   error: faExclamationCircle,
 };
 
-function getCalloutStyles({
+export function getCalloutStyles({
   variant,
   visible,
 }: {
