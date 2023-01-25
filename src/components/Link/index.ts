@@ -1,2 +1,2 @@
 export { Link } from './Link';
-export { ReactRouterLink } from './ReactRouterLink';
+export { getLinkStyles } from './styles';
