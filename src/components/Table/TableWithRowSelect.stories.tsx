@@ -1,5 +1,5 @@
 import { ColumnDef, Row, RowSelectionState } from '@tanstack/react-table';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { colorPalette, theme } from '../../theme/default';
 import { Badge } from '../Badge';
 import { Button } from '../Button';
@@ -176,18 +176,29 @@ export default {
   title: 'Components/Table',
 };
 
-const HeaderSlot = ({ disabled }: { disabled: boolean }) => {
+const HeaderSlot = ({
+  disabled,
+  selectedNode,
+}: {
+  disabled: boolean;
+  selectedNode: ReactNode;
+}) => {
   return (
-    <Button size="small" disabled={disabled}>
+    <Button
+      size="small"
+      disabled={disabled}
+      onClick={() => alert(JSON.stringify(selectedNode))}>
       Sperren
     </Button>
   );
 };
 
 export const WithRowSelection = () => {
+  const [customSelection, setCustomSelection] = useState();
   const [selectedRows, setSelectedRows] = useState<RowSelectionState>({});
 
   const selectedRowKeys = Object.keys(selectedRows);
+  console.log(customSelection);
 
   return (
     <Table<Location>
@@ -195,7 +206,13 @@ export const WithRowSelection = () => {
       onRowSelectionChange={setSelectedRows}
       state={{ rowSelection: selectedRows }}
       data={defaultData}
-      ToolbarComponent={<HeaderSlot disabled={selectedRowKeys.length < 1} />}
+      ToolbarComponent={
+        <HeaderSlot
+          disabled={selectedRowKeys.length < 1}
+          selectedNode={customSelection}
+        />
+      }
+      setCustomSelection={setCustomSelection}
     />
   );
 };

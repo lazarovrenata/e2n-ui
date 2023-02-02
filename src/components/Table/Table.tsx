@@ -12,7 +12,7 @@ import {
   TableOptions,
   getExpandedRowModel,
 } from '@tanstack/react-table';
-import { useMemo, useState, ReactNode } from 'react';
+import { useMemo, useState, ReactNode, useEffect } from 'react';
 import { colorPalette, theme } from '../../theme/default';
 import { TableNoData } from './TableNoData';
 import { TableBody } from './TableBody';
@@ -52,6 +52,7 @@ export function Table<T>({
   renderRowSubComponent,
   disablePagination = false,
   headerGroupSelector,
+  setCustomSelection,
   ...otherProps
 }: Omit<TableOptions<T>, 'getCoreRowModel' | 'data'> & {
   totalEntries?: number;
@@ -63,9 +64,9 @@ export function Table<T>({
   data?: T[];
   disablePagination?: boolean;
   headerGroupSelector?: string;
+  setCustomSelection?: (value: any) => void;
 }) {
   const [sorting, setSorting] = useState<SortingState>([]);
-  const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
 
   const columnDefs = useMemo<ColumnDef<T>[]>(() => {
     return [...columns];
@@ -79,16 +80,22 @@ export function Table<T>({
     getPaginationRowModel: getPaginationRowModel(),
     getExpandedRowModel: getExpandedRowModel(),
     onSortingChange: setSorting,
-    onRowSelectionChange: setRowSelection,
     enableMultiRowSelection: false,
     pageCount,
     ...otherProps,
     state: {
       sorting,
-      rowSelection,
       ...otherProps.state,
     },
   });
+
+  useEffect(() => {
+    if (setCustomSelection) {
+      setCustomSelection(
+        table.getSelectedRowModel().flatRows.map((row) => row.original),
+      );
+    }
+  }, [otherProps.state?.rowSelection]);
 
   return (
     <div style={{ padding: theme.spacing.sm }}>
