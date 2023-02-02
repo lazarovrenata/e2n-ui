@@ -178,27 +178,27 @@ export default {
 
 const HeaderSlot = ({
   disabled,
-  selectedNode,
+  originalRow,
 }: {
   disabled: boolean;
-  selectedNode: ReactNode;
+  originalRow: Location[] | undefined;
 }) => {
   return (
     <Button
       size="small"
       disabled={disabled}
-      onClick={() => alert(JSON.stringify(selectedNode))}>
+      onClick={() => alert(JSON.stringify(originalRow))}>
       Sperren
     </Button>
   );
 };
 
 export const WithRowSelection = () => {
-  const [customSelection, setCustomSelection] = useState();
+  const [originalRowSelection, setOriginalRowSelection] =
+    useState<Location[] | undefined>();
   const [selectedRows, setSelectedRows] = useState<RowSelectionState>({});
 
   const selectedRowKeys = Object.keys(selectedRows);
-  console.log(customSelection);
 
   return (
     <Table<Location>
@@ -209,10 +209,10 @@ export const WithRowSelection = () => {
       ToolbarComponent={
         <HeaderSlot
           disabled={selectedRowKeys.length < 1}
-          selectedNode={customSelection}
+          originalRow={originalRowSelection}
         />
       }
-      setCustomSelection={setCustomSelection}
+      setOriginalRowSelection={setOriginalRowSelection}
     />
   );
 };

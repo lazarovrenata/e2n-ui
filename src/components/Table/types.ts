@@ -4,6 +4,7 @@ import {
   PaginationState,
   Row,
   SortingState,
+  RowSelectionState,
 } from '@tanstack/react-table';
 
 export type TableColumnDef<TData, TValue = unknown> = ColumnDef<TData, TValue>;
@@ -15,3 +16,5 @@ export type TableRow<TData> = Row<TData>;
 export type TablePaginationState = PaginationState;
 
 export type TableExpandendState = ExpandedState;
+
+export type TableRowSelection = RowSelectionState;

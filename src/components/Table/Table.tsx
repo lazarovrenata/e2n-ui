@@ -6,7 +6,6 @@ import {
   getCoreRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  RowSelectionState,
   SortingState,
   useReactTable,
   TableOptions,
@@ -51,8 +50,7 @@ export function Table<T>({
   width,
   renderRowSubComponent,
   disablePagination = false,
-  headerGroupSelector,
-  setCustomSelection,
+  setOriginalRowSelection,
   ...otherProps
 }: Omit<TableOptions<T>, 'getCoreRowModel' | 'data'> & {
   totalEntries?: number;
@@ -64,7 +62,7 @@ export function Table<T>({
   data?: T[];
   disablePagination?: boolean;
   headerGroupSelector?: string;
-  setCustomSelection?: (value: any) => void;
+  setOriginalRowSelection?: (value: T[]) => void;
 }) {
   const [sorting, setSorting] = useState<SortingState>([]);
 
@@ -90,8 +88,8 @@ export function Table<T>({
   });
 
   useEffect(() => {
-    if (setCustomSelection) {
-      setCustomSelection(
+    if (setOriginalRowSelection) {
+      setOriginalRowSelection(
         table.getSelectedRowModel().flatRows.map((row) => row.original),
       );
     }
