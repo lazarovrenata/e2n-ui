@@ -17,17 +17,17 @@ function getStyles() {
       alignItems: 'center',
       gap: theme.spacing.sm,
       ':hover, :focus, :active': {
-        color: colorPalette.systemGray500,
+        color: colorPalette.grey500,
         cursor: 'pointer',
         span: {
-          color: colorPalette.systemGray500,
+          color: colorPalette.grey500,
           cursor: 'pointer',
         },
       },
     }),
     label: css({
       fontWeight: theme.weight.bold,
-      color: colorPalette.darkBlue,
+      color: colorPalette.primaryDarker,
     }),
   };
 }

@@ -19,27 +19,27 @@ type CustomProps = {
 export type ButtonProps = CustomProps & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const backgroundColor: Record<ButtonVariant, string> = {
-  primary: colorPalette.blue,
-  secondary: colorPalette.systemGray200,
-  error: colorPalette.red,
+  primary: colorPalette.primaryMain,
+  secondary: colorPalette.grey200,
+  error: colorPalette.errorMain,
 };
 
 const textColor: Record<ButtonVariant, string> = {
   primary: colorPalette.white,
-  secondary: colorPalette.systemGray500,
+  secondary: colorPalette.grey500,
   error: colorPalette.white,
 };
 
 const borderColor: Record<ButtonVariant, string> = {
-  primary: colorPalette.blue,
-  secondary: colorPalette.systemGray200,
-  error: colorPalette.red,
+  primary: colorPalette.primaryMain,
+  secondary: colorPalette.grey200,
+  error: colorPalette.errorMain,
 };
 
 const hoverColor: Record<ButtonVariant, string> = {
-  primary: colorPalette.blue,
-  error: colorPalette.red,
-  secondary: colorPalette.systemGray500,
+  primary: colorPalette.primaryMain,
+  error: colorPalette.errorMain,
+  secondary: colorPalette.grey500,
 };
 
 export const getButtonStyles = ({
@@ -63,8 +63,8 @@ export const getButtonStyles = ({
     button: css({
       backgroundColor: !disabled
         ? backgroundColor[variant]
-        : colorPalette.systemGray200,
-      color: !disabled ? textColor[variant] : colorPalette.systemGray500,
+        : colorPalette.grey200,
+      color: !disabled ? textColor[variant] : colorPalette.grey500,
       border: !disabled
         ? `2px solid ${borderColor[variant]}`
         : '2px solid transparent',
@@ -108,8 +108,8 @@ function getButtonVariantStyles({
 }): CSSObject | undefined {
   if (fill === 'outline') {
     return {
-      background: !disabled ? colorPalette.white : colorPalette.systemGray200,
-      color: !disabled ? backgroundColor[variant] : colorPalette.systemGray500,
+      background: !disabled ? colorPalette.white : colorPalette.grey200,
+      color: !disabled ? backgroundColor[variant] : colorPalette.grey500,
       '&:hover': !disabled
         ? {
             backgroundColor: backgroundColor[variant],

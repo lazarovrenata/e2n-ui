@@ -22,8 +22,8 @@ export function getStyles({
     textInput: css({
       padding: 10,
       border: isValid
-        ? `2px solid ${colorPalette.systemGray200}`
-        : `2px solid ${colorPalette.red}`,
+        ? `2px solid ${colorPalette.grey200}`
+        : `2px solid ${colorPalette.errorLight}`,
       borderRadius: theme.borderRadius.xs,
       transition: 'box-shadow 0.15s ease-in-out',
       width: '100%',
@@ -35,10 +35,10 @@ export function getStyles({
       },
       '::placeholder': {
         fontWeight: theme.weight.light,
-        color: colorPalette.systemGray500,
+        color: colorPalette.grey500,
       },
       backgroundColor: disabled
-        ? colorPalette.systemGray100
+        ? colorPalette.grey100
         : colorPalette.white,
       ...focusStyles,
     }),
@@ -67,12 +67,12 @@ export function getStyles({
       display: 'flex',
       alignItems: 'center',
       gap: theme.spacing.xs,
-      color: !isValid ? colorPalette.red : colorPalette.black,
+      color: !isValid ? colorPalette.errorLight : colorPalette.black,
     }),
     description: css({
       fontSize: theme.size.sm,
       paddingTop: theme.spacing.xs,
-      color: colorPalette.systemGray500,
+      color: colorPalette.grey500,
     }),
   };
 }

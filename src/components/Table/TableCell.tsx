@@ -39,7 +39,7 @@ function getTableCellStyles({
     ':hover':
       isHeader && isSortable
         ? {
-            color: colorPalette.systemGray500,
+            color: colorPalette.grey500,
           }
         : {},
     '.action-button-row': {

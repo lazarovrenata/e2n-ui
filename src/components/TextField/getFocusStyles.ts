@@ -16,22 +16,22 @@ export function getFocusStyles(
         ':focus': {
           boxShadow: `0px 0px 0px 4px ${
             isValid
-              ? colorPalette.systemGray200
-              : chroma(colorPalette.red).luminance(0.8).hex()
+              ? colorPalette.grey200
+              : chroma(colorPalette.errorLight).luminance(0.8).hex()
           }`,
           border: `2px solid ${
-            isValid ? colorPalette.systemGray500 : colorPalette.red
+            isValid ? colorPalette.grey500 : colorPalette.errorLight
           }`,
         },
         ':focus-visible': {
           border: `2px solid ${
-            isValid ? colorPalette.systemGray500 : colorPalette.red
+            isValid ? colorPalette.grey500 : colorPalette.errorLight
           }`,
           outline: 'none',
           boxShadow: `0px 0px 0px 4px ${
             isValid
-              ? colorPalette.systemGray200
-              : chroma(colorPalette.red).luminance(0.8).hex()
+              ? colorPalette.grey200
+              : chroma(colorPalette.errorLight).luminance(0.8).hex()
           }`,
         },
       };

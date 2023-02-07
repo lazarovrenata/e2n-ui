@@ -33,18 +33,18 @@ function navItemWrapperStyles({
       ':hover, :focus': {
         backgroundColor: match
           ? colorPalette.white
-          : colorPalette.systemGray200,
+          : colorPalette.grey200,
         cursor: 'pointer',
       },
     }),
     link: css({
-      color: match ? colorPalette.darkBlue : colorPalette.systemGray500,
+      color: match ? colorPalette.primaryDarker : colorPalette.grey500,
       textDecoration: 'none',
       transition: '0.2s',
       fontWeight: match ? theme.weight.bold : '',
     }),
     header: css({
-      color: colorPalette.systemGray500,
+      color: colorPalette.grey500,
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -72,7 +72,7 @@ function ReactRouterNavLink({ item }: { item: ReactRouterSideNavItem }) {
           <FontAwesomeIcon
             icon={item.icon}
             style={{ marginRight: 16 }}
-            color={match ? colorPalette.blue : colorPalette.systemGray500}
+            color={match ? colorPalette.primaryMain : colorPalette.grey500}
           />
         )}
         {item.name}
@@ -90,7 +90,7 @@ export function NavLink({ item }: { item: LinkSideNavItem }) {
           <FontAwesomeIcon
             icon={item.icon}
             style={{ marginRight: 16 }}
-            color={colorPalette.systemGray500}
+            color={colorPalette.grey500}
           />
         )}
         {item.name}

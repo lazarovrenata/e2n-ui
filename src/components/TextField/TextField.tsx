@@ -38,7 +38,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
             {!isValid && (
               <FontAwesomeIcon
                 icon={faExclamationCircle}
-                color={colorPalette.red}
+                color={colorPalette.errorLight}
               />
             )}
           </label>

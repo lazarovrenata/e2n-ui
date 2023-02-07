@@ -19,13 +19,13 @@ type CustomProps = {
 export type CalloutProps = CustomProps & HTMLAttributes<HTMLDivElement>;
 
 export const calloutColor = {
-  success: colorPalette.green,
-  error: colorPalette.red,
+  success: colorPalette.successMain,
+  error: colorPalette.errorMain,
 };
 
 export const calloutBackgroundColor = {
-  success: colorPalette.lightGreen,
-  error: colorPalette.lightRed,
+  success: colorPalette.successLighter,
+  error: colorPalette.errorLighter,
 };
 
 export const calloutIcon = {
@@ -50,7 +50,7 @@ export function getCalloutStyles({
       display: visible ? 'flex' : 'none',
       justifyContent: 'space-between',
       alignItems: 'center',
-      boxShadow: `${colorPalette.systemGray200} 0px 1px 4px`,
+      boxShadow: `${colorPalette.grey200} 0px 1px 4px`,
       gap: theme.spacing.md,
     }),
     content: css({
@@ -59,7 +59,7 @@ export function getCalloutStyles({
       alignItems: 'center',
     }),
     close: css({
-      color: colorPalette.systemGray500,
+      color: colorPalette.grey500,
       cursor: 'pointer',
     }),
   };

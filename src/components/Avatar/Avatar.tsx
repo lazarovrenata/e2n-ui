@@ -39,7 +39,7 @@ function getAvatarStyles(disableHover?: boolean, size?: SizeVariants) {
       ':hover': !disableHover
         ? {
             cursor: 'pointer',
-            border: `${theme.spacing.xs} solid ${colorPalette.systemGray200}`,
+            border: `${theme.spacing.xs} solid ${colorPalette.grey200}`,
           }
         : {},
     }),
@@ -51,7 +51,7 @@ function getAvatarStyles(disableHover?: boolean, size?: SizeVariants) {
       border: `3px solid ${colorPalette.white}`,
       height: 15,
       width: 15,
-      backgroundColor: colorPalette.red,
+      backgroundColor: colorPalette.errorLight,
     }),
     container: css({
       position: 'relative',

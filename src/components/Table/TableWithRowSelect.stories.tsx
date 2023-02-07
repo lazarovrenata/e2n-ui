@@ -109,8 +109,8 @@ const columns: ColumnDef<Location>[] = [
         <pre
           style={{
             fontSize: 12,
-            backgroundColor: colorPalette.systemGray200,
-            color: colorPalette.systemGray500,
+            backgroundColor: colorPalette.grey200,
+            color: colorPalette.grey500,
             padding: theme.spacing.xs,
             width: 'fit-content',
           }}>

@@ -204,7 +204,7 @@ export function Table<T>({
                       <TableRow variant="details">
                         <TableCell
                           style={{
-                            backgroundColor: colorPalette.systemGray100,
+                            backgroundColor: colorPalette.grey100,
                             boxShadow: 'inset 0px 11px 8px -10px #e4e7ec',
                           }}
                           variant="body"

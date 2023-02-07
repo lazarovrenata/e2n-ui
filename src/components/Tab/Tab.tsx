@@ -20,13 +20,13 @@ function getTabStyles() {
       fontWeight: theme.weight.regular,
     }),
     link: css({
-      color: colorPalette.systemGray500,
+      color: colorPalette.grey500,
       padding: theme.spacing.md,
       display: 'block',
     }),
     notActive: css({
       'a:hover, :hover, :focus': {
-        color: colorPalette.blue,
+        color: colorPalette.primaryMain,
         cursor: 'pointer',
         '::before': {
           display: 'block',
@@ -37,15 +37,15 @@ function getTabStyles() {
           height: 4,
           borderRadius: 2,
           bottom: 0,
-          background: colorPalette.systemGray200,
+          background: colorPalette.grey200,
         },
       },
     }),
     active: css({
-      color: colorPalette.blue,
+      color: colorPalette.primaryMain,
       fontWeight: theme.weight.bold,
       a: {
-        color: colorPalette.blue,
+        color: colorPalette.primaryMain,
       },
       '::before': {
         display: 'block',
@@ -56,7 +56,7 @@ function getTabStyles() {
         height: 4,
         borderRadius: 2,
         bottom: 0,
-        background: colorPalette.blue,
+        background: colorPalette.primaryMain,
       },
     }),
   };

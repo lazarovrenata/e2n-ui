@@ -40,12 +40,12 @@ export const PaginatorSelect = (props: PaginatorSelectProps) => {
             ...styles,
             border:
               state.isFocused && state.menuIsOpen
-                ? `1px solid ${colorPalette.systemGray200}`
+                ? `1px solid ${colorPalette.grey200}`
                 : '1px solid transparent',
             boxShadow: 'none',
-            backgroundColor: colorPalette.systemGray200,
+            backgroundColor: colorPalette.grey200,
             ':hover': {
-              border: `1px solid ${colorPalette.systemGray200}`,
+              border: `1px solid ${colorPalette.grey200}`,
             },
           };
         },

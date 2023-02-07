@@ -6,9 +6,9 @@ export default {
 };
 
 const options: Array<{ value: string; label: string }> = [
-  { value: 'green', label: 'green' },
-  { value: 'red', label: 'red' },
-  { value: 'blue', label: 'blue' },
+  { value: 'successMain', label: 'successMain' },
+  { value: 'errorLight', label: 'errorLight' },
+  { value: 'primaryMain', label: 'primaryMain' },
 ];
 
 export const Default = () => <Select options={options} label="Label" />;

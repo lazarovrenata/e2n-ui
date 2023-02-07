@@ -12,10 +12,10 @@ type CardProps = CustomProps & HTMLAttributes<HTMLDivElement>;
 function getCardStyles() {
   return css({
     borderRadius: theme.borderRadius.md,
-    border: `1px solid ${colorPalette.systemGray200}`,
+    border: `1px solid ${colorPalette.grey200}`,
     padding: theme.spacing.lg,
     backgroundColor: colorPalette.white,
-    boxShadow: `${colorPalette.systemGray200} 0px 1px 4px`,
+    boxShadow: `${colorPalette.grey200} 0px 1px 4px`,
     fontFamily: theme.fontFamily.sansSerif,
   });
 }

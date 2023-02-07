@@ -25,16 +25,16 @@ function getStyles({
       borderRadius: theme.borderRadius.md,
       '&:hover': {
         backgroundColor: !disabled
-          ? colorPalette.systemGray200
-          : colorPalette.systemGray500,
+          ? colorPalette.grey200
+          : colorPalette.grey500,
         cursor: !disabled ? 'pointer' : 'not-allowed',
         input: {
           border: `2px solid ${
-            !disabled ? colorPalette.darkBlue : colorPalette.systemGray500
+            !disabled ? colorPalette.primaryDarker : colorPalette.grey500
           }`,
           '&:checked': {
             border: `5px solid ${
-              !disabled ? colorPalette.darkBlue : colorPalette.systemGray500
+              !disabled ? colorPalette.primaryDarker : colorPalette.grey500
             }`,
           },
         },
@@ -46,7 +46,7 @@ function getStyles({
       fontSize: theme.size.md,
       fontWeight: theme.weight.semibold,
       cursor: disabled ? 'not-allowed' : 'unset',
-      color: disabled ? colorPalette.systemGray500 : 'inherit',
+      color: disabled ? colorPalette.grey500 : 'inherit',
       fontFamily: theme.fontFamily.sansSerif,
     }),
     input: css({
@@ -55,11 +55,11 @@ function getStyles({
       width: 15,
       height: 15,
       border: `2px solid ${
-        !disabled ? colorPalette.systemGray200 : colorPalette.systemGray500
+        !disabled ? colorPalette.grey200 : colorPalette.grey500
       }`,
       backgroundColor: !disabled
         ? colorPalette.white
-        : colorPalette.systemGray200,
+        : colorPalette.grey200,
       borderRadius: '50%',
       '&:after': {
         display: 'block',
@@ -71,7 +71,7 @@ function getStyles({
       },
       '&:checked': {
         border: `5px solid ${
-          !disabled ? colorPalette.darkBlue : colorPalette.systemGray500
+          !disabled ? colorPalette.primaryDarker : colorPalette.grey500
         }`,
       },
     }),

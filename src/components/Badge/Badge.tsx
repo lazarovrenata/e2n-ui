@@ -16,16 +16,16 @@ export type BadgeProps = CustomProps & HTMLAttributes<HTMLDivElement>;
 
 const colorStyleMap = {
   secondary: {
-    backgroundColor: colorPalette.systemGray200,
-    textColor: colorPalette.systemGray500,
+    backgroundColor: colorPalette.grey200,
+    textColor: colorPalette.grey500,
   },
   error: {
-    backgroundColor: colorPalette.lightRed,
-    textColor: colorPalette.darkRed,
+    backgroundColor: colorPalette.errorLighter,
+    textColor: colorPalette.errorDarker,
   },
   success: {
-    backgroundColor: colorPalette.lightGreen,
-    textColor: colorPalette.darkGreen,
+    backgroundColor: colorPalette.successLighter,
+    textColor: colorPalette.successDarker,
   },
 };
 

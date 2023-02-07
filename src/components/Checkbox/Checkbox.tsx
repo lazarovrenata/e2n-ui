@@ -40,18 +40,18 @@ function getStyles({
       height: theme.spacing.md,
       background: checked
         ? !disabled
-          ? colorPalette.darkBlue
-          : colorPalette.systemGray500
+          ? colorPalette.primaryDarker
+          : colorPalette.grey500
         : colorPalette.white,
       borderRadius: 3,
       border: `2px solid ${
         isValid
           ? checked
             ? !disabled
-              ? colorPalette.darkBlue
-              : colorPalette.systemGray500
-            : colorPalette.systemGray200
-          : colorPalette.red
+              ? colorPalette.primaryDarker
+              : colorPalette.grey500
+            : colorPalette.grey200
+          : colorPalette.errorLight
       }`,
     }),
     wrapper: css({

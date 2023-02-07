@@ -14,7 +14,7 @@ function getReadonlyFieldStyles({
       width: '50%',
     }),
     data: css({
-      color: textAvailable ? colorPalette.black : colorPalette.systemGray500,
+      color: textAvailable ? colorPalette.black : colorPalette.grey500,
       width: '50%',
     }),
   };

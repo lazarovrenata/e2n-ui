@@ -18,15 +18,15 @@ function getIconButtonStyles(disabled?: boolean) {
   return css({
     background: 'none',
     border: 'none',
-    color: !disabled ? colorPalette.darkBlue : colorPalette.systemGray200,
+    color: !disabled ? colorPalette.primaryDarker : colorPalette.grey200,
     fontWeight: theme.weight.bold,
     padding: '4px 8px',
     transition: '0.3s',
     cursor: !disabled ? 'pointer' : 'not-allowed',
     ':hover': {
       color: !disabled
-        ? colorPalette.systemGray500
-        : colorPalette.systemGray200,
+        ? colorPalette.grey500
+        : colorPalette.grey200,
     },
   });
 }

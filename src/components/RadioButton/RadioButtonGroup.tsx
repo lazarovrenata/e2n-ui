@@ -9,7 +9,7 @@ function getStyles(disabled?: boolean) {
       fontSize: theme.size.md,
       fontWeight: theme.weight.semibold,
       cursor: disabled ? 'not-allowed' : 'unset',
-      color: disabled ? colorPalette.systemGray500 : 'inherit',
+      color: disabled ? colorPalette.grey500 : 'inherit',
       fontFamily: theme.fontFamily.sansSerif,
       marginBottom: theme.spacing.sm,
     }),

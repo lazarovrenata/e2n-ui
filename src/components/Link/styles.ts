@@ -3,12 +3,12 @@ import { colorPalette, theme } from '../../theme/default';
 
 export function getLinkStyles() {
   return css({
-    color: colorPalette.darkBlue,
+    color: colorPalette.primaryDarker,
     fontWeight: theme.weight.regular,
     fontFamily: theme.fontFamily.sansSerif,
     transition: '0.6s',
     ':hover': {
-      color: colorPalette.blue,
+      color: colorPalette.primaryMain,
       textDecoration: 'underline',
       cursor: 'pointer',
     },

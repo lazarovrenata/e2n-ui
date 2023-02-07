@@ -39,7 +39,7 @@ function getStyles() {
       top: 0,
       height: '100vh',
       overflow: 'auto',
-      backgroundColor: colorPalette.systemGray100,
+      backgroundColor: colorPalette.grey100,
     }),
     header: css({
       display: 'flex',

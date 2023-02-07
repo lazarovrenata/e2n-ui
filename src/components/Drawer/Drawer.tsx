@@ -37,7 +37,7 @@ function getDrawerStyles({ position }: { position?: string }) {
       left: 0,
       backgroundColor: colorPalette.white,
       padding: theme.spacing.md,
-      borderBottom: `1px solid ${colorPalette.systemGray200}`,
+      borderBottom: `1px solid ${colorPalette.grey200}`,
       zIndex: 100,
     }),
     contentWrapper: css({
@@ -51,7 +51,7 @@ function getDrawerStyles({ position }: { position?: string }) {
       left: 0,
       backgroundColor: colorPalette.white,
       padding: `${theme.spacing.xl} ${theme.spacing.md}`,
-      borderTop: `1px solid ${colorPalette.systemGray200}`,
+      borderTop: `1px solid ${colorPalette.grey200}`,
       zIndex: 100,
     }),
     backdrop: css({

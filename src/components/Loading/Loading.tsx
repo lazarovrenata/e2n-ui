@@ -9,7 +9,7 @@ export function Loading() {
         spin={true}
         icon={faSpinner}
         size={'3x'}
-        color={colorPalette.systemGray500}
+        color={colorPalette.grey500}
       />
     </div>
   );

@@ -16,11 +16,11 @@ function getTableRowStyles({
   variant: 'header' | 'body' | 'details';
 }) {
   return css({
-    backgroundColor: isSelected ? colorPalette.systemGray100 : 'inherit',
-    borderBottom: `1px solid ${colorPalette.systemGray100}`,
+    backgroundColor: isSelected ? colorPalette.grey100 : 'inherit',
+    borderBottom: `1px solid ${colorPalette.grey100}`,
     lineHeight: theme.lineHeight.md,
     ':hover': {
-      backgroundColor: variant === 'body' ? colorPalette.systemGray100 : 'none',
+      backgroundColor: variant === 'body' ? colorPalette.grey100 : 'none',
       // show action buttons on hover
       td: {
         '.action-button-row': {

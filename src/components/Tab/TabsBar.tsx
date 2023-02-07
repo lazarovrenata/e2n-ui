@@ -11,7 +11,7 @@ type TabBarProps = HTMLAttributes<HTMLDivElement> & CustomProps;
 function getTabsBarStyles() {
   return {
     tabsBarWrapper: css({
-      borderBottom: `1px solid ${colorPalette.systemGray200}`,
+      borderBottom: `1px solid ${colorPalette.grey200}`,
     }),
     tabs: css({
       position: 'relative',

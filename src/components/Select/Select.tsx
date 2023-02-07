@@ -51,7 +51,7 @@ export function CustomSelect<
           ...styles,
           fontSize: theme.size.md,
           fontWeight: theme.weight.light,
-          color: colorPalette.systemGray500,
+          color: colorPalette.grey500,
           opacity: 0.5,
         };
       },
@@ -74,17 +74,17 @@ export function CustomSelect<
           padding: 2,
           border:
             !state.isFocused && !state.menuIsOpen
-              ? `2px solid ${colorPalette.systemGray200} `
-              : `2px solid ${colorPalette.systemGray500}`,
+              ? `2px solid ${colorPalette.grey200} `
+              : `2px solid ${colorPalette.grey500}`,
           borderRadius: theme.borderRadius.xs,
           boxShadow:
             !state.isFocused && !state.menuIsOpen
               ? 'none'
-              : `0px 0px 0px 4px ${colorPalette.systemGray200}`,
+              : `0px 0px 0px 4px ${colorPalette.grey200}`,
           fontSize: theme.size.base,
           fontWeight: theme.weight.light,
           ':hover': {
-            border: `2px solid ${colorPalette.systemGray500}`,
+            border: `2px solid ${colorPalette.grey500}`,
           },
         };
       },

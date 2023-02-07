@@ -49,7 +49,7 @@ export const MultilineTextField = forwardRef<
             {!isValid && (
               <FontAwesomeIcon
                 icon={faExclamationCircle}
-                color={colorPalette.red}
+                color={colorPalette.errorLight}
               />
             )}
           </label>

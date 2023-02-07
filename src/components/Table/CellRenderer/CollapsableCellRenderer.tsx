@@ -15,9 +15,9 @@ function getStyle(open: boolean) {
       textOverflow: !open ? 'ellipsis' : undefined,
       display: 'inline-block',
       whiteSpace: !open ? 'nowrap' : undefined,
-      backgroundColor: colorPalette.systemGray200,
+      backgroundColor: colorPalette.grey200,
       fontSize: 13,
-      border: `4px solid ${colorPalette.systemGray200}`,
+      border: `4px solid ${colorPalette.grey200}`,
       borderRadius: 4,
     }),
   };

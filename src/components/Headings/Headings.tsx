@@ -4,7 +4,7 @@ import { colorPalette, theme } from '../../theme/default';
 
 type CustomProps = {
   children: ReactNode;
-  variant?: 'blue';
+  variant?: 'primaryMain';
 };
 
 export type HeadingProps = CustomProps & HTMLAttributes<HTMLHeadingElement>;
@@ -12,7 +12,7 @@ export type HeadingProps = CustomProps & HTMLAttributes<HTMLHeadingElement>;
 function getHeadingStyles(variant?: string) {
   return css({
     fontFamily: theme.fontFamily.sansSerif,
-    color: variant === 'blue' ? colorPalette.blue : colorPalette.darkBlue,
+    color: variant === 'primaryMain' ? colorPalette.primaryMain : colorPalette.primaryDarker,
   });
 }
 
