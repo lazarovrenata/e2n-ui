@@ -1,6 +1,6 @@
 import { cx, css } from '@emotion/css';
 import { forwardRef, HTMLAttributes, ReactNode } from 'react';
-import { colorPalette, theme } from '../../theme/default';
+import { colorPalette, theme, typography } from '../../theme';
 
 type CustomProps = {
   children: ReactNode;
@@ -12,7 +12,10 @@ export type HeadingProps = CustomProps & HTMLAttributes<HTMLHeadingElement>;
 function getHeadingStyles(variant?: string) {
   return css({
     fontFamily: theme.fontFamily.sansSerif,
-    color: variant === 'primaryMain' ? colorPalette.primaryMain : colorPalette.primaryDarker,
+    color:
+      variant === 'primaryMain'
+        ? colorPalette.primaryMain
+        : colorPalette.primaryDarker,
   });
 }
 
@@ -26,7 +29,7 @@ export const H1 = forwardRef<HTMLHeadingElement, HeadingProps>(
         className={cx(
           'e2n-heading-h1',
           headingStyles,
-          css({ fontSize: theme.heading.h1, fontWeight: theme.weight.bold }),
+          css({ ...typography.header1 }),
           className,
         )}>
         {children}
@@ -47,7 +50,7 @@ export const H2 = forwardRef<HTMLHeadingElement, HeadingProps>(
         className={cx(
           'e2n-heading-h2',
           headingStyles,
-          css({ fontSize: theme.heading.h2, fontWeight: theme.weight.bold }),
+          css({ ...typography.header2 }),
           className,
         )}>
         {children}
@@ -68,7 +71,7 @@ export const H3 = forwardRef<HTMLHeadingElement, HeadingProps>(
         className={cx(
           'e2n-heading-h3',
           headingStyles,
-          css({ fontSize: theme.heading.h3, fontWeight: theme.weight.bold }),
+          css({ ...typography.header3 }),
           className,
         )}>
         {children}
@@ -89,7 +92,7 @@ export const H4 = forwardRef<HTMLHeadingElement, HeadingProps>(
         className={cx(
           'e2n-heading-h4',
           headingStyles,
-          css({ fontSize: theme.heading.h4, fontWeight: theme.weight.bold }),
+          css({ ...typography.header4 }),
           className,
         )}>
         {children}
@@ -110,7 +113,7 @@ export const H5 = forwardRef<HTMLHeadingElement, HeadingProps>(
         className={cx(
           'e2n-heading-h5',
           headingStyles,
-          css({ fontSize: theme.heading.h5, fontWeight: theme.weight.bold }),
+          css({ ...typography.header5 }),
           className,
         )}>
         {children}
@@ -131,7 +134,7 @@ export const H6 = forwardRef<HTMLHeadingElement, HeadingProps>(
         className={cx(
           'e2n-heading-h6',
           headingStyles,
-          css({ fontSize: theme.heading.h6, fontWeight: theme.weight.bold }),
+          css({ ...typography.header6 }),
           className,
         )}>
         {children}
