@@ -1,7 +1,7 @@
 {
   "name": "e2n-ui",
   "license": "MIT",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "type": "commonjs",
   "scripts": {
     "dev": "vite",

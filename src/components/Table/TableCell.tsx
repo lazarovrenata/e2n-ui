@@ -57,11 +57,13 @@ function getTableCellStyles({
     lineHeight: isHeader
       ? typography.tableHead.lineHeight
       : typography.tableCell.lineHeight,
-    div: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: theme.spacing.xs,
-    },
+    div: isHeader
+      ? {
+          display: 'flex',
+          alignItems: 'center',
+          gap: theme.spacing.xs,
+        }
+      : {},
   });
 }
 
