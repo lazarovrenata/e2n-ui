@@ -2,7 +2,7 @@ import { css, cx } from '@emotion/css';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { forwardRef, HTMLAttributes, ReactElement } from 'react';
-import { colorPalette, theme } from '../../theme';
+import { colorPalette, theme, typography } from '../../theme';
 
 type BadgeVariants = 'secondary' | 'error' | 'success' | 'info1' | 'warning';
 
@@ -46,8 +46,7 @@ function getBadgeStyles(
 ) {
   return css({
     padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
-    fontSize: theme.size.sm,
-    fontWeight: theme.weight.regular,
+    ...typography.badge,
     width: 'fit-content',
     display: 'flex',
     alignItems: 'center',

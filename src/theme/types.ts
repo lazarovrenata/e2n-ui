@@ -199,6 +199,7 @@ export type Typography = {
   overline: TypographyAttributes;
   tableHead: TypographyAttributes;
   tableCell: TypographyAttributes;
+  badge: TypographyAttributes;
 };
 
 export type Shadow = {

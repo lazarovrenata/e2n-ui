@@ -72,4 +72,9 @@ export const typography: Typography = {
     lineHeight: '24px',
     fontWeight: 400,
   },
+  badge: {
+    fontSize: '12px',
+    lineHeight: '20px',
+    fontWeight: 600,
+  },
 };
