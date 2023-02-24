@@ -1,6 +1,6 @@
 import { css, cx } from '@emotion/css';
 import React, { TdHTMLAttributes, ThHTMLAttributes } from 'react';
-import { colorPalette, theme } from '../../theme';
+import { colorPalette, theme, typography } from '../../theme';
 
 type CustomProps = {
   variant: 'body' | 'head';
@@ -35,7 +35,8 @@ function getTableCellStyles({
 }) {
   return css({
     cursor: isHeader && isSortable ? 'pointer' : 'default',
-    padding: `${theme.spacing.md} ${theme.spacing.xs}`,
+    padding: theme.spacing.md,
+
     ':hover':
       isHeader && isSortable
         ? {
@@ -46,6 +47,20 @@ function getTableCellStyles({
       button: {
         opacity: 0,
       },
+    },
+    fontSize: isHeader
+      ? typography.tableHead.fontSize
+      : typography.tableCell.fontSize,
+    fontWeight: isHeader
+      ? typography.tableHead.fontWeight
+      : typography.tableCell.fontWeight,
+    lineHeight: isHeader
+      ? typography.tableHead.lineHeight
+      : typography.tableCell.lineHeight,
+    div: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: theme.spacing.xs,
     },
   });
 }

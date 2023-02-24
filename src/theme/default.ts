@@ -8,7 +8,7 @@ export const theme: Theme = {
     sansSerif: 'PublicSans',
   },
   size: {
-    base: '16px',
+    base: '14px',
     xs: '10px',
     sm: '12px',
     md: '14px',

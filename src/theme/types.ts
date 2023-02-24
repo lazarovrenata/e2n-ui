@@ -197,6 +197,8 @@ export type Typography = {
   body2: TypographyAttributes;
   caption: TypographyAttributes;
   overline: TypographyAttributes;
+  tableHead: TypographyAttributes;
+  tableCell: TypographyAttributes;
 };
 
 export type Shadow = {
@@ -209,4 +211,5 @@ export type Shadow = {
   card: string;
   dialog: string;
   dropdown: string;
+  tableFooter: string;
 };

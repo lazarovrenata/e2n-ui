@@ -62,4 +62,14 @@ export const typography: Typography = {
     lineHeight: '18px',
     fontWeight: 700,
   },
+  tableHead: {
+    fontSize: '13px',
+    lineHeight: '24px',
+    fontWeight: 600,
+  },
+  tableCell: {
+    fontSize: '14px',
+    lineHeight: '24px',
+    fontWeight: 400,
+  },
 };

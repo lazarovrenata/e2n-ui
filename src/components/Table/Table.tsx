@@ -26,6 +26,7 @@ import {
   faChevronDown,
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
+import { TableCard } from './TableContainer';
 
 function getTableStyles({ width }: { width?: number }) {
   return css({
@@ -34,8 +35,7 @@ function getTableStyles({ width }: { width?: number }) {
     borderSpacing: '0px',
     borderCollapse: 'collapse',
     fontFamily: theme.fontFamily.sansSerif,
-    margin: '25px 0',
-    fontSize: theme.size.base,
+    color: colorPalette.grey800,
   });
 }
 
@@ -48,16 +48,20 @@ export function Table<T>({
   loading,
   NoDataComponent,
   width,
+  height,
   renderRowSubComponent,
   disablePagination = false,
+  TabsBarComponent,
   setOriginalRowSelection,
   ...otherProps
 }: Omit<TableOptions<T>, 'getCoreRowModel' | 'data'> & {
   totalEntries?: number;
   loading?: boolean;
   ToolbarComponent?: ReactNode;
+  TabsBarComponent?: ReactNode;
   NoDataComponent?: ReactNode;
   width?: number;
+  height?: number | string;
   renderRowSubComponent?: (originalRow: T) => ReactNode;
   data?: T[];
   disablePagination?: boolean;
@@ -96,9 +100,16 @@ export function Table<T>({
   }, [otherProps.state?.rowSelection]);
 
   return (
-    <div style={{ padding: theme.spacing.sm }}>
-      {ToolbarComponent}
-      <div style={{ overflowX: 'auto' }}>
+    <TableCard
+      height={height}
+      PaginatorComponent={
+        !disablePagination && (
+          <TablePaginator<T> table={table} totalEntries={totalEntries ?? 0} />
+        )
+      }
+      TabsBarComponent={TabsBarComponent}
+      ToolbarComponent={ToolbarComponent}
+      TableComponent={
         <table className={cx('table', getTableStyles({ width }))}>
           <TableHead>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -112,9 +123,7 @@ export function Table<T>({
                       variant="head"
                       sortable={header.column.getCanSort()}>
                       {header.isPlaceholder ? null : (
-                        <div
-                          className="d-flex flex-no-wrap align-items-center"
-                          onClick={header.column.getToggleSortingHandler()}>
+                        <div onClick={header.column.getToggleSortingHandler()}>
                           <div>
                             {flexRender(
                               header.column.columnDef.header,
@@ -223,10 +232,7 @@ export function Table<T>({
             )}
           </TableBody>
         </table>
-      </div>
-      {!disablePagination && (
-        <TablePaginator<T> table={table} totalEntries={totalEntries ?? 0} />
-      )}
-    </div>
+      }
+    />
   );
 }

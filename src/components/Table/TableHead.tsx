@@ -1,5 +1,6 @@
 import { css, cx } from '@emotion/css';
 import { HTMLAttributes } from 'react';
+import { colorPalette } from '../../theme';
 
 type CustomProps = {
   children: React.ReactNode;
@@ -11,6 +12,8 @@ export type TableHeadProps = CustomProps &
 function getTableHeaderStyles() {
   return css({
     display: 'table-header-group',
+    backgroundColor: colorPalette.grey100,
+    position: 'sticky',
   });
 }
 

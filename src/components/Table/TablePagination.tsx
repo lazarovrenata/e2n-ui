@@ -28,12 +28,10 @@ export function TablePaginator<T>({
           alignItems: 'center',
           fontFamily: theme.fontFamily.sansSerif,
           fontSize: theme.size.base,
-          paddingTop: 16,
         }),
       )}>
       <div>
-        Zeilen: {table.getCoreRowModel().rows.length} | Einträge gesamt:{' '}
-        {totalEntries}
+        Einträge gesamt: <strong>{totalEntries}</strong>
       </div>
       <div
         className={cx(
@@ -63,10 +61,12 @@ export function TablePaginator<T>({
         <div>
           <IconButton
             icon={faAngleLeft}
+            size="2x"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           />
           <IconButton
+            size="2x"
             icon={faAngleRight}
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}

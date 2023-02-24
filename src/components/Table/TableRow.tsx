@@ -17,8 +17,7 @@ function getTableRowStyles({
 }) {
   return css({
     backgroundColor: isSelected ? colorPalette.grey100 : 'inherit',
-    borderBottom: `1px solid ${colorPalette.grey100}`,
-    lineHeight: theme.lineHeight.md,
+    borderBottom: `1px solid ${colorPalette.grey200}`,
     ':hover': {
       backgroundColor: variant === 'body' ? colorPalette.grey100 : 'none',
       // show action buttons on hover

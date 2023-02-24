@@ -10,4 +10,5 @@ export const shadow: Shadow = {
   card: `0px 0px 2px rgba(145, 158, 171, 0.2), 0px 12px 12px -4px rgba(145, 158, 171, 0.12)`,
   dialog: `-40px 40px 80px -8px rgba(145, 158, 171, 0.24)`,
   dropdown: `0px 0px 2px rgba(145, 158, 171, 0.24), -20px 20px 40px -4px rgba(145, 158, 171, 0.24)`,
+  tableFooter: `0px 12px 24px 4px rgba(145, 158, 171, 0.16)`,
 };

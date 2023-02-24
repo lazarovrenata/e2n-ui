@@ -1,7 +1,6 @@
 {
   "name": "e2n-ui",
   "license": "MIT",
-  "private": false,
   "version": "1.0.8",
   "type": "commonjs",
   "scripts": {
