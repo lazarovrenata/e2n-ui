@@ -24,8 +24,8 @@ export const calloutColor = {
 };
 
 export const calloutBackgroundColor = {
-  success: colorPalette.successTransparent12,
-  error: colorPalette.errorTransparent12,
+  success: colorPalette.successLighter,
+  error: colorPalette.errorLighter,
 };
 
 export const calloutIcon = {
