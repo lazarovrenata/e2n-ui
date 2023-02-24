@@ -16,6 +16,7 @@ function getCardStyles() {
     backgroundColor: colorPalette.white,
     fontFamily: theme.fontFamily.sansSerif,
     boxShadow: shadow.card,
+    border: `1px solid ${colorPalette.greyTransparent12}`,
   });
 }
 
