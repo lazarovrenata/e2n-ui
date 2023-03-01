@@ -65,6 +65,12 @@ export function Dropdown({
   }, [setIsOpen]);
 
   async function handleDropdownClick() {
+    // Prüfe ob das Element über welches das Dropdown geöffnet wird (z.B. TextField, Button, ect) disabled ist
+    // falls ja sollte auch nicht das Dropdown aufklappen
+    const isReferenceElementDisabled = children.props.disabled;
+    if (isReferenceElementDisabled) {
+      return;
+    }
     setIsOpen(!isOpen);
     if (update) {
       await update();
