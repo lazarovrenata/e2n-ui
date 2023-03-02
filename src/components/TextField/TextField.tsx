@@ -44,7 +44,12 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           </label>
         )}
         <div className={cx(styles.fieldWrapper)}>
-          <input ref={ref} className={cx(styles.textInput)} {...otherProps} />
+          <input
+            ref={ref}
+            className={cx(styles.textInput)}
+            disabled={disabled}
+            {...otherProps}
+          />
         </div>
         {description && (
           <span className={cx(styles.description)}>{description}</span>

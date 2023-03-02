@@ -116,6 +116,7 @@ export function Checkbox({
           type="checkbox"
           defaultChecked={checked}
           value={value}
+          disabled={disabled}
           {...otherProps}
         />
         <div className={cx('checkbox', styles.checkbox)}>

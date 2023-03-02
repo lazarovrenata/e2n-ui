@@ -37,6 +37,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       <button
         ref={ref}
         {...otherProps}
+        disabled={disabled}
         className={cx('e2n-icon-button', textButtonStyles, className)}>
         <FontAwesomeIcon icon={icon} spin={spin} size={size} />
       </button>

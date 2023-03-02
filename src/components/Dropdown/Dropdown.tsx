@@ -1,6 +1,7 @@
 import { css, cx } from '@emotion/css';
 import { Placement } from '@popperjs/core';
 import { cloneElement, ReactElement, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { usePopper } from 'react-popper';
 import { colorPalette, shadow, theme } from '../../theme';
 
@@ -65,12 +66,6 @@ export function Dropdown({
   }, [setIsOpen]);
 
   async function handleDropdownClick() {
-    // Prüfe ob das Element über welches das Dropdown geöffnet wird (z.B. TextField, Button, ect) disabled ist
-    // falls ja sollte auch nicht das Dropdown aufklappen
-    const isReferenceElementDisabled = children.props.disabled;
-    if (isReferenceElementDisabled) {
-      return;
-    }
     setIsOpen(!isOpen);
     if (update) {
       await update();
@@ -83,16 +78,18 @@ export function Dropdown({
         ref: referenceRef,
         onClick: handleDropdownClick,
       })}
-      <div
-        ref={popoverRef}
-        style={{
-          ...popperStyles.popper,
-          minWidth: referenceRef.current?.scrollWidth,
-          zIndex: 1000,
-        }}
-        {...attributes.popper}>
-        {isOpen && <div className={cx(styles.popover)}>{content}</div>}
-      </div>
+      {createPortal(
+        <div
+          ref={popoverRef}
+          style={{
+            ...popperStyles.popper,
+            minWidth: referenceRef.current?.scrollWidth,
+          }}
+          {...attributes.popper}>
+          {isOpen && <div className={cx(styles.popover)}>{content}</div>}
+        </div>,
+        document.body,
+      )}
     </>
   );
 }

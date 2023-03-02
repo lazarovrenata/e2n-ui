@@ -19,6 +19,7 @@ export const Default = Template.bind({});
 Default.args = {
   label: 'Die Richtigkeit der Angaben wurde bestätigt',
   value: 'Option 1',
+  disabled: true,
   onChange: (value) => {
     console.log(value);
   },
