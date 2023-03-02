@@ -53,6 +53,7 @@ function getBadgeStyles(
     gap: theme.spacing.xs,
     borderRadius: theme.borderRadius.sm,
     fontFamily: theme.fontFamily.sansSerif,
+    whiteSpace: 'nowrap',
     backgroundColor: backgroundColor
       ? backgroundColor
       : colorStyleMap[variant].backgroundColor,
