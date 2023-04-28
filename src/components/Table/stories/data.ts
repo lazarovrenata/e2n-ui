@@ -66,60 +66,24 @@ export const data: Location[] = [
 
 export type Data = {
   id: number;
-  contractId: string;
-  customerId: string;
-  numberOfLocations: number | undefined;
-  createdAt: Date;
+  name: string;
+  numberOfLocations: number;
 };
 
 export const defaultData: Data[] = [
   {
     id: 0,
-    contractId: 'B2001234',
-    customerId: '#009700',
+    name: 'Bilbo',
     numberOfLocations: 4,
-    createdAt: new Date('2015-06-01'),
   },
   {
     id: 1,
-    contractId: 'B20024729',
-    customerId: '#009701',
-    numberOfLocations: 32,
-    createdAt: new Date('2016-03-23'),
+    name: 'Gandalf the Grey',
+    numberOfLocations: 3,
   },
   {
     id: 1,
-    contractId: 'B20024729',
-    customerId: '#009701',
-    numberOfLocations: 32,
-    createdAt: new Date('2016-03-23'),
-  },
-  {
-    id: 1,
-    contractId: 'B20024729',
-    customerId: '#009701',
-    numberOfLocations: 32,
-    createdAt: new Date('2016-03-23'),
-  },
-  {
-    id: 1,
-    contractId: 'B20024729',
-    customerId: '#009701',
-    numberOfLocations: 32,
-    createdAt: new Date('2016-03-23'),
-  },
-  {
-    id: 1,
-    contractId: 'B20024729',
-    customerId: '#009701',
-    numberOfLocations: 32,
-    createdAt: new Date('2016-03-23'),
-  },
-  {
-    id: 1,
-    contractId: 'B20024729',
-    customerId: '#009701',
-    numberOfLocations: 32,
-    createdAt: new Date('2016-03-23'),
+    name: 'Frodo',
+    numberOfLocations: 234,
   },
 ];

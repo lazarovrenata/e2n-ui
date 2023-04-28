@@ -28,27 +28,28 @@ const HeaderSlot = ({
   );
 };
 
-export const WithRowSelection = () => {
-  const [originalRowSelection, setOriginalRowSelection] =
+export const WithRowSelection = {
+  render: () => {
+    const [originalRowSelection, setOriginalRowSelection] =
     useState<Location[] | undefined>();
-  const [selectedRows, setSelectedRows] = useState<RowSelectionState>({});
-
-  const selectedRowKeys = Object.keys(selectedRows);
-
-  return (
-    <Table<Location>
-      columns={columns}
-      onRowSelectionChange={setSelectedRows}
-      state={{ rowSelection: selectedRows }}
-      data={data}
-      width={2000}
-      ToolbarComponent={
-        <HeaderSlot
+    const [selectedRows, setSelectedRows] = useState<RowSelectionState>({});
+    
+    const selectedRowKeys = Object.keys(selectedRows);
+    
+    return (
+      <Table<Location>
+        columns={columns}
+        onRowSelectionChange={setSelectedRows}
+        state={{ rowSelection: selectedRows }}
+        data={data}
+        ToolbarComponent={
+          <HeaderSlot
           disabled={selectedRowKeys.length < 1}
           originalRow={originalRowSelection}
+          />
+        }
+        setOriginalRowSelection={setOriginalRowSelection}
         />
+    );
       }
-      setOriginalRowSelection={setOriginalRowSelection}
-    />
-  );
 };

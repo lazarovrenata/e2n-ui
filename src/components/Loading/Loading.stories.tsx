@@ -5,4 +5,6 @@ export default {
   component: Loading,
 };
 
-export const Default = () => <Loading />;
+export const Default = {
+  render: () => <Loading />,
+};

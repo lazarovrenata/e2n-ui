@@ -1,13 +1,13 @@
 import { css, cx } from '@emotion/css';
-import { forwardRef, HTMLAttributes } from 'react';
+import { forwardRef, HTMLAttributes, ReactNode } from 'react';
 import { colorPalette, shadow, theme } from '../../theme';
 
 type CustomProps = {
-  header?: React.ReactNode;
-  content?: React.ReactNode;
+  header?: ReactNode;
+  content?: ReactNode;
 };
 
-type CardProps = CustomProps & HTMLAttributes<HTMLDivElement>;
+type CardProps = CustomProps & Omit<HTMLAttributes<HTMLDivElement>, 'content'>;
 
 function getCardStyles() {
   return css({

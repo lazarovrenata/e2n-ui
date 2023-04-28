@@ -1,19 +1,20 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Avatar } from './Avatar';
+import { Avatar, AvatarProps } from './Avatar';
+import defaultImage from '../../assets/images/defaultAvatar.png';
 
 export default {
   title: 'Components/Avatar',
   component: Avatar,
   parameters: {
-    controls: {
-      exclude: ['disableHover', 'showNotification'],
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/dytYKVyXYobjZXq0BDPFsK/e2n-admin.18.04.23?node-id=48%3A6173&t=tOdmpeO4QYOISGNJ-1',
     },
   },
-} as ComponentMeta<typeof Avatar>;
+};
 
-const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-  imgSrc: '',
+export const Default = {
+  render: (args: AvatarProps) => <Avatar {...args} />,
+  args: {
+    imgSrc: defaultImage,
+  },
 };

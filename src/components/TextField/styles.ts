@@ -1,6 +1,6 @@
 import { css } from '@emotion/css';
-import { colorPalette, theme } from '../../theme';
-import { getFocusStyles } from './getFocusStyles';
+import { colorPalette, theme, typography } from '../../theme';
+import { getFocusAndHoverStyles } from './getFocusStyles';
 
 export function getStyles({
   width,
@@ -17,34 +17,35 @@ export function getStyles({
   textAreaHeight?: number;
   disabled?: boolean;
 }) {
-  const focusStyles = getFocusStyles(isValid, disabled);
+  const focusStyles = getFocusAndHoverStyles(isValid, disabled);
   return {
     textInput: css({
-      padding: 10,
-      border: isValid
-        ? `2px solid ${colorPalette.grey200}`
-        : `2px solid ${colorPalette.errorLight}`,
-      borderRadius: theme.borderRadius.xs,
-      transition: 'box-shadow 0.15s ease-in-out',
-      width: '100%',
-      fontFamily: 'inherit',
-      fontSize: theme.size.md,
-      fontWeight: theme.weight.regular,
-      ':hover': {
-        cursor: disabled ? 'not-allowed' : 'default',
-      },
       '::placeholder': {
         fontWeight: theme.weight.regular,
         color: colorPalette.grey500,
       },
-      backgroundColor: disabled ? colorPalette.grey100 : colorPalette.white,
-      ...focusStyles,
+      backgroundColor: 'transparent',
+      border: 'none',
+      ':hover': {
+        cursor: disabled ? 'not-allowed' : 'default',
+      },
+      width: '100%',
+      ...typography.textField,
     }),
     textArea: css({
+      ...typography.textField,
       resize: resizable ? 'both' : 'none',
       width: textAreaWidth ? textAreaWidth : 'auto',
       height: textAreaHeight ? textAreaHeight : '100%',
-      fontSize: 14,
+      fontFamily: theme.fontFamily.sansSerif,
+      padding: `${theme.spacing.sm} ${theme.spacing.md}`,
+      border: isValid
+        ? `1px solid ${colorPalette.grey300}`
+        : `1px solid ${colorPalette.errorLight}`,
+      borderRadius: theme.borderRadius.sm,
+      transition: 'border 0.15s ease-in-out',
+      backgroundColor: disabled ? colorPalette.grey100 : colorPalette.white,
+      ...focusStyles,
     }),
     wrapper: css({
       display: 'flex',
@@ -57,20 +58,30 @@ export function getStyles({
       flexDirection: 'row',
       gap: theme.spacing.sm,
       alignItems: 'center',
+      backgroundColor: disabled ? colorPalette.grey100 : colorPalette.white,
+      padding: `${theme.spacing.sm} ${theme.spacing.md}`,
+      border: isValid
+        ? `1px solid ${colorPalette.grey300}`
+        : `1px solid ${colorPalette.errorLight}`,
+      borderRadius: theme.borderRadius.sm,
+      transition: 'border 0.15s ease-in-out',
+      '& .input-adornment': {
+        color: isValid ? colorPalette.grey500 : colorPalette.errorMain,
+      },
+      ...focusStyles,
     }),
     label: css({
       paddingBottom: theme.spacing.xs,
-      fontSize: theme.size.md,
-      fontWeight: theme.weight.semibold,
       display: 'flex',
       alignItems: 'center',
       gap: theme.spacing.xs,
       color: !isValid ? colorPalette.errorLight : colorPalette.black,
+      ...typography.textFieldLabel,
     }),
     description: css({
-      fontSize: theme.size.sm,
       paddingTop: theme.spacing.xs,
       color: colorPalette.grey500,
+      ...typography.textFieldDescription,
     }),
   };
 }

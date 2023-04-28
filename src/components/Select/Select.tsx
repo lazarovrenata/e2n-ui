@@ -1,7 +1,7 @@
 import { css, cx } from '@emotion/css';
 import { useMemo } from 'react';
 import Select, { GroupBase, Props, StylesConfig } from 'react-select';
-import { colorPalette, theme } from '../../theme';
+import { colorPalette, shadow, theme, typography } from '../../theme';
 import makeAnimated from 'react-select/animated';
 
 function getStyles() {
@@ -13,8 +13,7 @@ function getStyles() {
     }),
     label: css({
       paddingBottom: theme.spacing.xs,
-      fontSize: theme.size.md,
-      fontWeight: theme.weight.semibold,
+      ...typography.textFieldLabel,
     }),
   };
 }
@@ -49,10 +48,10 @@ export function CustomSelect<
       placeholder: (styles, state) => {
         return {
           ...styles,
-          fontSize: theme.size.md,
-          fontWeight: theme.weight.regular,
           color: colorPalette.grey500,
           opacity: 0.5,
+          ...typography.textField,
+          lineHeight: undefined,
         };
       },
       input: (styles, state) => {
@@ -65,27 +64,32 @@ export function CustomSelect<
       singleValue: (styles) => {
         return {
           ...styles,
-          fontSize: theme.size.md,
+          ...typography.textField,
+          lineHeight: undefined,
         };
       },
       control: (styles, state) => {
         return {
           ...styles,
-          padding: 2,
+          padding: 3,
           border:
             !state.isFocused && !state.menuIsOpen
-              ? `2px solid ${colorPalette.grey200} `
-              : `2px solid ${colorPalette.grey500}`,
-          borderRadius: theme.borderRadius.xs,
-          boxShadow:
-            !state.isFocused && !state.menuIsOpen
-              ? 'none'
-              : `0px 0px 0px 4px ${colorPalette.grey200}`,
-          fontSize: theme.size.base,
-          fontWeight: theme.weight.regular,
+              ? `1px solid ${colorPalette.grey300} `
+              : `1px solid ${colorPalette.grey500}`,
+          borderRadius: theme.borderRadius.sm,
+          boxShadow: 'none',
           ':hover': {
-            border: `2px solid ${colorPalette.grey500}`,
+            border: `1px solid ${colorPalette.grey500}`,
           },
+          ...typography.textField,
+          lineHeight: undefined,
+        };
+      },
+      menu: (styles, state) => {
+        return {
+          ...styles,
+          boxShadow: shadow.dropdown,
+          borderRadius: theme.borderRadius.sm,
         };
       },
     };

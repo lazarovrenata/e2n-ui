@@ -27,7 +27,7 @@ type Option = {
   name: string;
 };
 
-type RadioButtonGroupProps = {
+export type RadioButtonGroupProps = {
   label: string;
   options: Option[];
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;

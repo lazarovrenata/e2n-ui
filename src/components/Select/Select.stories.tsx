@@ -11,10 +11,14 @@ const options: Array<{ value: string; label: string }> = [
   { value: 'primaryMain', label: 'primaryMain' },
 ];
 
-export const Default = () => <Select options={options} label="Label" />;
+export const Default = {
+  render: () => <Select options={options} label="Label" />,
+};
 
-export const Multi = () => <Select isMulti options={options} />;
+export const Multi = {
+  render: () => <Select isMulti options={options} />,
+};
 
-export const MultiWithAnimation = () => (
-  <Select isMulti options={options} isAnimated />
-);
+export const MultiWithAnimation = {
+  render: () => <Select isMulti options={options} isAnimated />,
+};

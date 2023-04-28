@@ -77,4 +77,24 @@ export const typography: Typography = {
     lineHeight: '20px',
     fontWeight: 600,
   },
+  textField: {
+    fontSize: '16px',
+    lineHeight: '24px',
+    fontWeight: 400,
+  },
+  textFieldLabel: {
+    fontSize: '12px',
+    lineHeight: '20px',
+    fontWeight: 700,
+  },
+  textFieldDescription: {
+    fontSize: '12px',
+    lineHeight: '20px',
+    fontWeight: 400,
+  },
+  navItem: {
+    fontSize: '16px',
+    lineHeight: '24px',
+    fontWeight: 600,
+  },
 };

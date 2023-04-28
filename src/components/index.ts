@@ -9,6 +9,7 @@ export * from './Dropdown';
 export * from './Headings';
 export * from './Link';
 export * from './Loading';
+export * from './Navigation';
 export * from './MenuItem';
 export * from './ModalDialog';
 export * from './RadioButton';

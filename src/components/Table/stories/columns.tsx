@@ -1,9 +1,10 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { Badge } from '../../Badge';
 import { IndeterminateCheckbox } from '../IndeterminateCheckbox';
+import { TableColumnDef } from '../types';
 import { type Data, type Contract, type Location } from './data';
 
-export const columns: ColumnDef<Location>[] = [
+export const columns: TableColumnDef<Location>[] = [
   {
     id: 'select',
     size: 25,
@@ -23,18 +24,15 @@ export const columns: ColumnDef<Location>[] = [
     accessorKey: 'locationGroupId',
     header: 'Nr.',
     enableSorting: false,
-    size: 75,
   },
   {
     accessorKey: 'name',
     header: 'Standort',
-    size: 100,
   },
   {
     accessorKey: 'key',
     header: 'Schlüssel',
     enableSorting: false,
-    size: 150,
     cell: (info) => {
       return <Badge text={info.getValue() as string} />;
     },
@@ -42,12 +40,19 @@ export const columns: ColumnDef<Location>[] = [
   {
     accessorKey: 'numberOfEmployees',
     header: '#MA',
+    type: 'rightAligned',
     size: 50,
+    cell: (info) => {
+      return <div style={{textAlign: 'right'}}>{info.getValue() as number}</div>
+    }
   },
   {
     accessorKey: 'maxNumberOfEmployees',
     header: '<MA',
     size: 50,
+    cell: (info) => {
+      return <div style={{textAlign: 'right'}}>{info.getValue() as number}</div>
+    }
   },
   {
     id: 'contractType',
@@ -57,7 +62,6 @@ export const columns: ColumnDef<Location>[] = [
       const contract = info.getValue() as Contract;
       return <Badge text={contract.type} variant="success" />;
     },
-    size: 50,
   },
   {
     id: 'contractValidUntil',
@@ -68,12 +72,10 @@ export const columns: ColumnDef<Location>[] = [
       const contract = info.getValue() as Contract;
       return contract.validUntil.toDateString();
     },
-    size: 200,
   },
   {
     accessorKey: 'createdAt',
     header: 'Erstellt am',
-    size: 200,
     enableSorting: false,
     cell: (info) => {
       const value = new Date(info.getValue() as string);
@@ -83,7 +85,6 @@ export const columns: ColumnDef<Location>[] = [
   {
     accessorKey: 'updatedAt',
     header: 'Geändert am',
-    size: 200,
     enableSorting: false,
     cell: (info) => {
       const value = new Date(info.getValue() as string);
@@ -96,16 +97,17 @@ export const defaultColumns: ColumnDef<Data>[] = [
     {
       accessorKey: 'name',
       header: 'Name',
+      cell: (info) => {
+        return <>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</>
+      }
     },
     {
       accessorKey: 'numberOfLocations',
       header: 'Standorte',
-      size: 100,
     },
     {
       accessorKey: 'numberOfEmployees',
       header: 'Mitarbeiter',
-      size: 50,
     },
   ];
 

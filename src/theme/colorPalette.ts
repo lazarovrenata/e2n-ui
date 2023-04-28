@@ -4,6 +4,7 @@ export const colorPalette: ColorPalette = {
   // Neutral colors
   white: '#ffffff',
   black: '#000000',
+  lightBlue: '#EDF3FD',
 
   //PRIMARY
   primaryLighter: '#B0C1FA',

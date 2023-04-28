@@ -1,12 +1,12 @@
 import { css, cx, keyframes } from '@emotion/css';
-import { InputHTMLAttributes } from 'react';
+import { InputHTMLAttributes, Key } from 'react';
 import { colorPalette, theme } from '../../theme';
 
 type RadioButtonProps = {
   label: string;
   id: string;
   disabled?: boolean;
-  key?: string;
+  key?: Key;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 function getStyles({

@@ -1,5 +1,8 @@
 import { cx } from '@emotion/css';
-import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import {
+  faExclamationCircle,
+  IconDefinition,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { forwardRef, InputHTMLAttributes } from 'react';
 import { colorPalette } from '../../theme';
@@ -10,6 +13,7 @@ type CustomProps = {
   isValid?: boolean | undefined;
   label?: string;
   description?: string;
+  inputAdornment?: IconDefinition;
 };
 
 export type TextFieldProps = CustomProps &
@@ -23,6 +27,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       isValid = true,
       label,
       description,
+      inputAdornment,
       disabled,
       ...otherProps
     },
@@ -43,9 +48,14 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
             )}
           </label>
         )}
-        <div className={cx(styles.fieldWrapper)}>
+        <div ref={ref} className={cx(styles.fieldWrapper)}>
+          {inputAdornment && (
+            <FontAwesomeIcon
+              className="input-adornment"
+              icon={inputAdornment}
+            />
+          )}
           <input
-            ref={ref}
             className={cx(styles.textInput)}
             disabled={disabled}
             {...otherProps}

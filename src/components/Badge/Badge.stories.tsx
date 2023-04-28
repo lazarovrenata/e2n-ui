@@ -1,6 +1,5 @@
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Badge } from './Badge';
+import { Badge, BadgeProps } from './Badge';
 
 export default {
   title: 'Components/Badge',
@@ -9,18 +8,26 @@ export default {
     backgroundColor: { control: 'color' },
     textColor: { control: 'color' },
   },
-} as ComponentMeta<typeof Badge>;
-
-const Template: ComponentStory<typeof Badge> = (args) => <Badge {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-  text: 'Nicht zugewiesen',
-  variant: 'success',
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/dytYKVyXYobjZXq0BDPFsK/e2n-admin.18.04.23?node-id=99%3A10844&t=tOdmpeO4QYOISGNJ-1',
+    },
+  },
 };
 
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-  text: 'Download',
-  icon: faDownload,
+export const Default = {
+  render: (args: BadgeProps) => <Badge {...args} />,
+  args: {
+    text: 'Nicht zugewiesen',
+    variant: 'success',
+  },
+};
+
+export const WithIcon = {
+  render: (args: BadgeProps) => <Badge {...args} />,
+  args: {
+    text: 'Download',
+    icon: faDownload,
+  },
 };

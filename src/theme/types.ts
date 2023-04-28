@@ -46,6 +46,7 @@ export interface ColorPalette {
   // Neutral colors
   white: string;
   black: string;
+  lightBlue: string;
 
   //PRIMARY
   primaryLighter: string;
@@ -200,6 +201,10 @@ export type Typography = {
   tableHead: TypographyAttributes;
   tableCell: TypographyAttributes;
   badge: TypographyAttributes;
+  textField: TypographyAttributes;
+  textFieldLabel: TypographyAttributes;
+  textFieldDescription: TypographyAttributes;
+  navItem: TypographyAttributes;
 };
 
 export type Shadow = {

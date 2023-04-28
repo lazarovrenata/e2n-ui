@@ -84,6 +84,7 @@ export function Dropdown({
           style={{
             ...popperStyles.popper,
             minWidth: referenceRef.current?.scrollWidth,
+            zIndex: 200,
           }}
           {...attributes.popper}>
           {isOpen && <div className={cx(styles.popover)}>{content}</div>}

@@ -1,17 +1,15 @@
 import { css, cx } from '@emotion/css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   ColumnDef,
-  flexRender,
   getCoreRowModel,
   getPaginationRowModel,
   getSortedRowModel,
   SortingState,
   useReactTable,
-  TableOptions,
+  TableOptions as ReactTableOptions,
   getExpandedRowModel,
 } from '@tanstack/react-table';
-import { useMemo, useState, ReactNode, useEffect } from 'react';
+import { useMemo, useState, ReactNode, useEffect, Fragment } from 'react';
 import { colorPalette, theme } from '../../theme';
 import { TableNoData } from './TableNoData';
 import { TableBody } from './TableBody';
@@ -20,15 +18,17 @@ import { TableHead } from './TableHead';
 import { TableLoading } from './TableLoading';
 import { TablePaginator } from './TablePagination';
 import { TableRow } from './TableRow';
-import {
-  faArrowDown,
-  faArrowUp,
-  faChevronDown,
-  faChevronRight,
-} from '@fortawesome/free-solid-svg-icons';
 import { TableCard } from './TableContainer';
+import { TableHeaderCell } from './TableHeaderCell';
+import { TableBodyCell } from './TableBodyCell';
 
-function getTableStyles({ width }: { width?: number }) {
+function getTableStyles({
+  width,
+  isEmpty,
+}: {
+  width?: number;
+  isEmpty?: boolean;
+}) {
   return css({
     width: width ? width : '100%',
     display: 'table',
@@ -36,8 +36,27 @@ function getTableStyles({ width }: { width?: number }) {
     borderCollapse: 'collapse',
     fontFamily: theme.fontFamily.sansSerif,
     color: colorPalette.grey800,
+    tableLayout: !isEmpty ? 'fixed' : 'auto',
   });
 }
+
+type CustomProps<T> = {
+  totalEntries?: number;
+  loading?: boolean;
+  ToolbarComponent?: ReactNode;
+  TabsBarComponent?: ReactNode;
+  NoDataComponent?: ReactNode;
+  width?: number;
+  height?: number | string;
+  renderRowSubComponent?: (originalRow: T) => ReactNode;
+  data?: T[];
+  disablePagination?: boolean;
+  headerGroupSelector?: string;
+  setOriginalRowSelection?: (value: T[]) => void;
+};
+
+export type TableProps<T> = CustomProps<T> &
+  Omit<ReactTableOptions<T>, 'getCoreRowModel' | 'data'>;
 
 export function Table<T>({
   columns,
@@ -54,25 +73,14 @@ export function Table<T>({
   TabsBarComponent,
   setOriginalRowSelection,
   ...otherProps
-}: Omit<TableOptions<T>, 'getCoreRowModel' | 'data'> & {
-  totalEntries?: number;
-  loading?: boolean;
-  ToolbarComponent?: ReactNode;
-  TabsBarComponent?: ReactNode;
-  NoDataComponent?: ReactNode;
-  width?: number;
-  height?: number | string;
-  renderRowSubComponent?: (originalRow: T) => ReactNode;
-  data?: T[];
-  disablePagination?: boolean;
-  headerGroupSelector?: string;
-  setOriginalRowSelection?: (value: T[]) => void;
-}) {
+}: TableProps<T>) {
   const [sorting, setSorting] = useState<SortingState>([]);
 
   const columnDefs = useMemo<ColumnDef<T>[]>(() => {
     return [...columns];
   }, [columns]);
+
+  const isEmpty = data?.length === 0;
 
   const table = useReactTable({
     columns: columnDefs,
@@ -110,45 +118,13 @@ export function Table<T>({
       TabsBarComponent={TabsBarComponent}
       ToolbarComponent={ToolbarComponent}
       TableComponent={
-        <table className={cx('table', getTableStyles({ width }))}>
+        <table className={cx('table', getTableStyles({ width, isEmpty }))}>
           <TableHead>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id} variant="header">
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableCell
-                      key={header.id}
-                      style={{ width: header.getSize() }}
-                      align="left"
-                      variant="head"
-                      sortable={header.column.getCanSort()}>
-                      {header.isPlaceholder ? null : (
-                        <div onClick={header.column.getToggleSortingHandler()}>
-                          <div>
-                            {flexRender(
-                              header.column.columnDef.header,
-                              header.getContext(),
-                            )}
-                          </div>
-                          {{
-                            asc: (
-                              <FontAwesomeIcon
-                                icon={faArrowUp}
-                                style={{ marginLeft: theme.spacing.xs }}
-                              />
-                            ),
-                            desc: (
-                              <FontAwesomeIcon
-                                icon={faArrowDown}
-                                style={{ marginLeft: theme.spacing.xs }}
-                              />
-                            ),
-                          }[header.column.getIsSorted() as string] ?? null}
-                        </div>
-                      )}
-                    </TableCell>
-                  );
-                })}
+                {headerGroup.headers.map((header) => (
+                  <TableHeaderCell<T> key={header.id} header={header} />
+                ))}
               </TableRow>
             ))}
           </TableHead>
@@ -162,50 +138,13 @@ export function Table<T>({
             ) : (
               table.getRowModel().rows.map((row) => {
                 return (
-                  <>
+                  <Fragment key={row.id}>
                     <TableRow
                       variant="body"
                       isSelected={row.getIsSelected()}
-                      key={row.id}
                       onClick={row.getToggleSelectedHandler()}>
                       {row.getVisibleCells().map((cell) => (
-                        <TableCell key={cell.id} variant="body">
-                          {cell.getIsGrouped() ? (
-                            <>
-                              <span
-                                {...{
-                                  onClick: row.getToggleExpandedHandler(),
-                                  style: {
-                                    cursor: row.getCanExpand()
-                                      ? 'pointer'
-                                      : 'normal',
-                                  },
-                                }}>
-                                {row.getIsExpanded() ? (
-                                  <FontAwesomeIcon icon={faChevronDown} />
-                                ) : (
-                                  <FontAwesomeIcon icon={faChevronRight} />
-                                )}{' '}
-                                {flexRender(
-                                  cell.column.columnDef.cell,
-                                  cell.getContext(),
-                                )}{' '}
-                                ({row.subRows.length})
-                              </span>
-                            </>
-                          ) : cell.getIsAggregated() ? (
-                            flexRender(
-                              cell.column.columnDef.aggregatedCell ??
-                                cell.column.columnDef.cell,
-                              cell.getContext(),
-                            )
-                          ) : cell.getIsPlaceholder() ? null : (
-                            flexRender(
-                              cell.column.columnDef.cell,
-                              cell.getContext(),
-                            )
-                          )}
-                        </TableCell>
+                        <TableBodyCell key={cell.id} cell={cell} row={row} />
                       ))}
                     </TableRow>
                     {/* Todo besseres Handling um Expandend Rows und Grouped Rows voneinander abzugrenzen */}
@@ -226,7 +165,7 @@ export function Table<T>({
                         </TableCell>
                       </TableRow>
                     )}
-                  </>
+                  </Fragment>
                 );
               })
             )}

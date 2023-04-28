@@ -1,17 +1,14 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Callout } from './Callout';
+import { Callout, CalloutProps } from './Callout';
 
 export default {
   title: 'Components/Callout',
   component: Callout,
-} as ComponentMeta<typeof Callout>;
+};
 
-const Template: ComponentStory<typeof Callout> = (args) => (
-  <Callout {...args} />
-);
-
-export const Default = Template.bind({});
-Default.args = {
-  variant: 'error',
-  message: 'Diese Aktion konnte nicht ausgeführt werden.',
+export const Default = {
+  render: (args: CalloutProps) => <Callout {...args} />,
+  args: {
+    variant: 'error',
+    message: 'Diese Aktion konnte nicht ausgeführt werden.',
+  },
 };

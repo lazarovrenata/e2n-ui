@@ -1,47 +1,55 @@
 import { css, cx } from '@emotion/css';
 import { forwardRef, HTMLAttributes } from 'react';
-import { colorPalette, theme } from '../../theme';
+import { colorPalette } from '../../theme';
+import defaultImg from '../../assets/images/defaultAvatar.png';
 
-type SizeVariants = 'small' | 'medium';
+type SizeVariants = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+type ShapeVariants = 'circular' | 'rounded' | 'square';
 
 type CustomProps = {
+  /** The URL of the image file to display. */
   imgSrc: string;
-  showNotification?: boolean;
-  disableHover?: boolean;
+  /** The size of the avatar, in rem (e.g. "1rem") */
   size?: SizeVariants;
+  /** The shape of the picture. Use a circle avatar to represent a person. */
+  shape?: ShapeVariants;
+  /** Use this flag to show a red circle in the top right of the avatar. */
+  showNotification?: boolean;
+};
+
+const sizeMap: Record<SizeVariants, string> = {
+  xs: '1.5rem',
+  sm: '2rem',
+  md: '2.5rem',
+  lg: '3rem',
+  xl: '4rem',
 };
 
 export type AvatarProps = CustomProps & HTMLAttributes<HTMLDivElement>;
 
-function getAvatarStyles(disableHover?: boolean, size?: SizeVariants) {
+function getAvatarStyles(size: SizeVariants, shape: ShapeVariants) {
   return {
     img: css({
       width: '100%',
       height: '100%',
       objectFit: 'cover',
-      borderRadius: '50%',
-      transition: !disableHover ? '0.3s' : 'none',
-      ':hover': !disableHover
-        ? {
-            transition: '0.3s',
-            transform: 'scale(1.2)',
-          }
-        : {},
+      transition: '0.3s',
+      ':hover': {
+        transition: '0.3s',
+        transform: 'scale(1.2)',
+      },
     }),
     imgWrapper: css({
-      width: size === 'medium' ? 75 : 50,
-      height: size === 'medium' ? 75 : 50,
+      width: sizeMap[size],
+      height: sizeMap[size],
       overflow: 'hidden',
-      borderRadius: '50%',
+      borderRadius:
+        shape === 'square' ? 'none' : shape === 'rounded' ? 8 : '50%',
       // https://stackoverflow.com/questions/73356087/unexpected-behavior-on-click-hover-focus-on-safari-only-circle-pictures-change
       transform: 'translateZ(0px)',
-      border: `${theme.spacing.xs} solid transparent`,
-      ':hover': !disableHover
-        ? {
-            cursor: 'pointer',
-            border: `${theme.spacing.xs} solid ${colorPalette.grey200}`,
-          }
-        : {},
+      ':hover': {
+        cursor: 'pointer',
+      },
     }),
     notification: css({
       position: 'absolute',
@@ -49,8 +57,8 @@ function getAvatarStyles(disableHover?: boolean, size?: SizeVariants) {
       right: -4,
       borderRadius: '50%',
       border: `3px solid ${colorPalette.white}`,
-      height: 15,
-      width: 15,
+      height: `calc(${sizeMap[size]} * 0.25)`,
+      width: `calc(${sizeMap[size]} * 0.25)`,
       backgroundColor: colorPalette.errorLight,
     }),
     container: css({
@@ -60,16 +68,28 @@ function getAvatarStyles(disableHover?: boolean, size?: SizeVariants) {
   };
 }
 
+/**
+ * A react component to display a user's profile picture or initials.
+ */
 export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
-  ({ imgSrc, showNotification, disableHover, size, ...otherProps }, ref) => {
-    const styles = getAvatarStyles(disableHover, size);
+  (
+    {
+      imgSrc,
+      showNotification,
+      shape = 'circular',
+      size = 'md',
+      ...otherProps
+    },
+    ref,
+  ) => {
+    const styles = getAvatarStyles(size, shape);
 
     return (
       <div ref={ref} className={cx(styles.container, 'avatar-container')}>
         <div className={cx(styles.imgWrapper, 'img-wrapper')} {...otherProps}>
           <img
             className={cx(styles.img, 'avatar-img')}
-            src={imgSrc}
+            src={imgSrc === '' ? defaultImg : imgSrc}
             alt="avatar"
           />
         </div>

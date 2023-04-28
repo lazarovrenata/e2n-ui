@@ -4,11 +4,11 @@ import { getLinkStyles } from './styles';
 
 export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement>;
 
-export const Link = forwardRef(
-  ({ children, className, ...otherProps }: LinkProps) => {
+export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
+  ({ children, className, ...otherProps }, ref) => {
     const styles = getLinkStyles();
     return (
-      <a className={cx(styles, className)} {...otherProps}>
+      <a className={cx(styles, className)} ref={ref} {...otherProps}>
         {children}
       </a>
     );

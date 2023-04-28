@@ -1,18 +1,21 @@
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { IconButton } from './IconButton';
+import { IconButton, IconButtonProps } from './IconButton';
 
 export default {
   title: 'Components/Buttons/IconButton',
   component: IconButton,
-} as ComponentMeta<typeof IconButton>;
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/dytYKVyXYobjZXq0BDPFsK/e2n-admin.18.04.23?node-id=43%3A11480&t=tOdmpeO4QYOISGNJ-1',
+    },
+  },
+};
 
-const Template: ComponentStory<typeof IconButton> = (args) => (
-  <IconButton {...args} />
-);
-
-export const Basic = Template.bind({});
-Basic.args = {
-  icon: faEdit,
+export const Basic = {
+  render: (args: IconButtonProps) => <IconButton {...args} />,
+  args: {
+    icon: faEdit,
+  },
 };

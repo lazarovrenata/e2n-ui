@@ -43,6 +43,6 @@ const subTableColumns: ColumnDef<Data>[] = [  {
     },
   },]
 
-export const WithSubTable = () => {
-    return <Table<Data> columns={[...subTableColumns, ...defaultColumns]} data={defaultData} renderRowSubComponent={(originalRow) => <div>Test</div>} />;
+export const WithSubTable = {
+  render: () => <Table<Data> columns={[...subTableColumns, ...defaultColumns]} data={defaultData} renderRowSubComponent={() => <div>Test</div>} />
 };

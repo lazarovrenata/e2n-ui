@@ -6,10 +6,10 @@ export default {
   component: MenuItem,
 };
 
-export const Default = () => {
-  return <MenuItem label="Verträge" />;
+export const Default = {
+  render: () => <MenuItem label="Verträge" />,
 };
 
-export const WithIcon = () => {
-  return <MenuItem icon={faPeopleRoof} label="Kunden" />;
+export const WithIcon = {
+  render: () => <MenuItem icon={faPeopleRoof} label="Kunden" />,
 };

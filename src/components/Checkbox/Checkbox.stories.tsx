@@ -1,5 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Checkbox } from './Checkbox';
+import { Checkbox, CheckboxProps } from './Checkbox';
 
 export default {
   title: 'Components/Checkbox',
@@ -9,18 +8,13 @@ export default {
       exclude: ['className', 'defaultChecked'],
     },
   },
-} as ComponentMeta<typeof Checkbox>;
+};
 
-const Template: ComponentStory<typeof Checkbox> = (args) => (
-  <Checkbox {...args} />
-);
-
-export const Default = Template.bind({});
-Default.args = {
-  label: 'Die Richtigkeit der Angaben wurde bestätigt',
-  value: 'Option 1',
-  disabled: true,
-  onChange: (value) => {
-    console.log(value);
+export const Default = {
+  render: (args: CheckboxProps) => <Checkbox {...args} />,
+  args: {
+    label: 'Die Richtigkeit der Angaben wurde bestätigt',
+    value: 'Option 1',
+    disabled: true,
   },
 };

@@ -7,7 +7,10 @@ import {
   RowSelectionState,
 } from '@tanstack/react-table';
 
-export type TableColumnDef<TData, TValue = unknown> = ColumnDef<TData, TValue>;
+export type TableColumnDef<TData, TValue = unknown> = ColumnDef<
+  TData,
+  TValue
+> & { type?: 'rightAligned' };
 
 export type TableSortingState = SortingState;
 

@@ -66,12 +66,14 @@ const Header = () => {
   return <H3>Header</H3>;
 };
 
-export const Default = () => {
-  return (
-    <SideNav
-      header={<Header />}
-      sideNavItems={items}
-      className={css({ width: 260 })}
-    />
-  );
+export const Default = {
+  render: () => {
+    return (
+      <SideNav
+        header={<Header />}
+        sideNavItems={items}
+        className={css({ width: 260 })}
+      />
+    );
+  },
 };
