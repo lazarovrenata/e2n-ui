@@ -35,7 +35,8 @@
     "react-router-dom": "^6.10.0",
     "react-select": "^5.7.2",
     "react-stately": "^3.22.0",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "token-transformer": "^0.0.32"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
@@ -67,6 +68,7 @@
     "sass": "^1.62.0",
     "storybook": "7.0.7",
     "storybook-addon-designs": "beta",
+    "style-dictionary": "^3.8.0",
     "typescript": "^5.0.4",
     "vite": "^4.2.1",
     "vite-plugin-dts": "^2.2.0"

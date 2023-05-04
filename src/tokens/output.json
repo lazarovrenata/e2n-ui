@@ -1,0 +1,45 @@
+{
+  "primary-lighter": {
+    "value": "#B0C1FA",
+    "type": "color"
+  },
+  "primary-light": {
+    "value": "#5479F4",
+    "type": "color"
+  },
+  "primary-main": {
+    "value": "#0037EE",
+    "type": "color"
+  },
+  "primary-dark": {
+    "value": "#0027A9",
+    "type": "color"
+  },
+  "primary-darker": {
+    "value": "#001764",
+    "type": "color"
+  },
+  "font-family": {
+    "value": "Public Sans",
+    "type": "fontFamilies"
+  },
+  "desktop-header-1": {
+    "value": {
+      "fontFamily": "Public Sans",
+      "fontWeight": 800,
+      "lineHeight": 80,
+      "fontSize": 64
+    },
+    "type": "typography"
+  },
+  "extra-bold": {
+    "value": 800,
+    "type": "fontWeights"
+  },
+  "tokenSetOrder": {
+    "0": {
+      "value": "default",
+      "type": "other"
+    }
+  }
+}
