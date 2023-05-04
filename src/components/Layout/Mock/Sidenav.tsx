@@ -2,10 +2,7 @@ import { css, cx } from '@emotion/css';
 import { colorPalette } from '../../../theme';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faChevronLeft,
-  faChevronRight,
-} from '@fortawesome/pro-duotone-svg-icons';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 function getStyles(open: boolean) {
   return css({

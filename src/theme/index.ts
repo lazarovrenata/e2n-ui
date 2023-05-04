@@ -4,3 +4,4 @@ export { typography } from './typopgraphy';
 export { shadow } from './shadows';
 export * from './flex';
 export * from './spacing';
+export * from './themes';

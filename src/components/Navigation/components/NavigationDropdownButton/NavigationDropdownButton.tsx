@@ -1,6 +1,5 @@
 import { css, cx } from '@emotion/css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/pro-duotone-svg-icons';
 import { ReactNode } from 'react';
 import {
   colorPalette,
@@ -11,6 +10,7 @@ import {
 } from '../../../../theme';
 import { NavigationDropdown } from '../NavigationDropdown';
 import { useTheme } from '../../theme';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 function getStyles(theme: Theme) {
   return css({

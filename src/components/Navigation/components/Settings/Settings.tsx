@@ -1,10 +1,10 @@
-import { faCog } from '@fortawesome/pro-duotone-svg-icons';
 import { IconButton } from '../../../Button';
 import { IconButtonProps } from '../../../Button/IconButton';
 import { css, cx } from '@emotion/css';
 import { colorPalette, theme } from '../../../../theme';
 import { NavigationDropdown } from '../NavigationDropdown';
 import { ReactNode } from 'react';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 const styles = css({
   fontSize: theme.size.lg,

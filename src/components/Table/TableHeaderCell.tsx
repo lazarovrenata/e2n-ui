@@ -2,8 +2,8 @@ import { flexRender, Header } from '@tanstack/react-table';
 import { TableColumnDef } from './types';
 import { TableCell } from './TableCell';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowDown, faArrowUp } from '@fortawesome/pro-duotone-svg-icons';
 import { theme } from '../../theme';
+import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 export function TableHeaderCell<T>({ header }: { header: Header<T, unknown> }) {
   const isRightAligned =

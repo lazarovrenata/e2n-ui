@@ -1,11 +1,11 @@
-import {
-  faChevronDown,
-  faChevronRight,
-} from '@fortawesome/pro-duotone-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Cell, flexRender, Row } from '@tanstack/react-table';
 import { TableCell } from './TableCell';
 import { TableColumnDef } from './types';
+import {
+  faChevronDown,
+  faChevronRight,
+} from '@fortawesome/free-solid-svg-icons';
 
 export function TableBodyCell<T>({
   cell,

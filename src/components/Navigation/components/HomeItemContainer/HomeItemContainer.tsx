@@ -1,6 +1,5 @@
 import { css, cx } from '@emotion/css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot } from '@fortawesome/pro-duotone-svg-icons';
 import {
   spacingMap,
   theme as e2nTheme,
@@ -9,6 +8,7 @@ import {
   Theme,
 } from '../../../../theme';
 import { useTheme } from '../../theme';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 type HomeItemContainerProps = {
   /** The URL to link to. */

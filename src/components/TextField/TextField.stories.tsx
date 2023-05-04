@@ -1,4 +1,4 @@
-import { faSearch } from '@fortawesome/pro-duotone-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { TextField } from './TextField';
 
 export default {
