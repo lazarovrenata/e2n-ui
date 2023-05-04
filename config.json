@@ -2,6 +2,8 @@
   "source": ["src/tokens/output.json"],
   "platforms": {
     "scss": {
+      "transform": ["size/pxToRem", "name/cti/kebab"],
+      "basePxFontSize": 16,
       "transformGroup": "scss",
       "buildPath": "src/tokens/",
       "files": [{
