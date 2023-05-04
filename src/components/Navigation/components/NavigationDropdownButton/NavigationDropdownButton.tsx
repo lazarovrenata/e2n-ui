@@ -2,25 +2,26 @@ import { css, cx } from '@emotion/css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/pro-duotone-svg-icons';
 import { ReactNode } from 'react';
-import { colorPalette, theme, spacingMap, typography } from '../../../../theme';
+import {
+  colorPalette,
+  theme as e2nTheme,
+  spacingMap,
+  typography,
+  Theme,
+} from '../../../../theme';
 import { NavigationDropdown } from '../NavigationDropdown';
+import { useTheme } from '../../theme';
 
-export function NavigationDropdownButton({
-  trigger,
-  children,
-}: {
-  trigger: string;
-  children: ReactNode;
-}) {
-  const buttonStyles = css({
+function getStyles(theme: Theme) {
+  return css({
     transition: 'background-color, color 0.3s',
-    color: colorPalette.grey600,
+    color: theme.text,
     display: 'flex',
     justifyContent: 'center',
     gap: spacingMap.xs,
     alignItems: 'center',
     border: 0,
-    borderRadius: theme.borderRadius.xs,
+    borderRadius: e2nTheme.borderRadius.xs,
     ...typography.navItem,
     padding: spacingMap.xs,
     ':hover, :focus, :focus-visible': {
@@ -43,9 +44,19 @@ export function NavigationDropdownButton({
       },
     },
   });
+}
 
+export function NavigationDropdownButton({
+  trigger,
+  children,
+}: {
+  trigger: string;
+  children: ReactNode;
+}) {
+  const theme = useTheme();
+  const styles = getStyles(theme);
   const Trigger = (
-    <button className={cx(buttonStyles)}>
+    <button className={cx(styles)}>
       {trigger}
       <FontAwesomeIcon className="chevron-down" icon={faChevronDown} />
     </button>

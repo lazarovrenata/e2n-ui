@@ -7,7 +7,7 @@ import {
   NavigationDropdownButton,
   HomeItemContainer,
 } from './components';
-import { Settings } from './components/Settings';
+import { NavigationSettings } from './components/Settings';
 import { Button } from '../Button';
 import { within, userEvent } from '@storybook/testing-library';
 import { StoryObj } from '@storybook/react';
@@ -35,6 +35,9 @@ export default {
     renderHome: {
       control: false,
     },
+    theme: {
+      control: false,
+    },
   },
 };
 
@@ -59,12 +62,12 @@ export const Default: StoryObj<NavigationProps> = {
     menuItems: PrimaryItems,
     renderProfile: () => <Avatar imgSrc={imgSrc} />,
     renderSettings: () => (
-      <Settings>
+      <NavigationSettings>
         <div>
           Darkmode
           <Button onClick={() => alert('hello')}>Toggle</Button>
         </div>
-      </Settings>
+      </NavigationSettings>
     ),
     renderHome: () => (
       <HomeItemContainer href="https://e2n.de" title="My Café" />

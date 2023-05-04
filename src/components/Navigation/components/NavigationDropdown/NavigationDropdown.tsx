@@ -3,11 +3,13 @@ import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { ReactNode, Children } from 'react';
 import {
   colorPalette,
-  theme,
+  theme as e2nTheme,
   shadow,
   typography,
   spacingMap,
+  Theme,
 } from '../../../../theme';
+import { useTheme } from '../../theme';
 
 type NavigationDropdownProps = {
   /** The element that triggers the display of the dropdown. */
@@ -27,12 +29,12 @@ const slideUpAndFade = keyframes({
   },
 });
 
-function getStyles() {
+function getStyles(theme: Theme) {
   return {
     content: css({
       minWidth: 200,
-      backgroundColor: colorPalette.commonWhite,
-      borderRadius: theme.borderRadius.xs,
+      backgroundColor: theme.body,
+      borderRadius: e2nTheme.borderRadius.xs,
       padding: 5,
       boxShadow: shadow.dropdown,
       animationDuration: '0.3s',
@@ -48,7 +50,7 @@ function getStyles() {
     }),
     dropdownMenuItem: css({
       ...typography.body1,
-      borderRadius: theme.borderRadius.xs,
+      borderRadius: e2nTheme.borderRadius.xs,
       display: 'flex',
       alignItems: 'center',
       height: 32,
@@ -73,7 +75,8 @@ export function NavigationDropdown({
   trigger: Trigger,
   children,
 }: NavigationDropdownProps) {
-  const styles = getStyles();
+  const theme = useTheme();
+  const styles = getStyles(theme);
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger className={cx(styles.trigger)} asChild>
@@ -87,6 +90,7 @@ export function NavigationDropdown({
           {Children.toArray(children).map((item, index) => {
             return (
               <DropdownMenu.Item
+                asChild
                 key={index}
                 data-testid="navigation-dropdown-menu-item"
                 className={cx(

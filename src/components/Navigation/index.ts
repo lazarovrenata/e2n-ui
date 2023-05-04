@@ -3,4 +3,5 @@ export {
   HomeItemContainer,
   NavigationButton,
   NavigationDropdownButton,
+  NavigationSettings,
 } from './components';

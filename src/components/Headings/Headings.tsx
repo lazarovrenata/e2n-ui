@@ -1,27 +1,31 @@
 import { cx, css } from '@emotion/css';
 import { forwardRef, HTMLAttributes, ReactNode } from 'react';
-import { colorPalette, theme, typography } from '../../theme';
+import {
+  Theme,
+  colorPalette,
+  theme as e2nTheme,
+  lightTheme,
+  typography,
+} from '../../theme';
 
 type CustomProps = {
   children: ReactNode;
   variant?: 'primaryMain';
+  theme?: Theme;
 };
 
 export type HeadingProps = CustomProps & HTMLAttributes<HTMLHeadingElement>;
 
-function getHeadingStyles(variant?: string) {
+function getHeadingStyles(theme: Theme, variant?: string) {
   return css({
-    fontFamily: theme.fontFamily.sansSerif,
-    color:
-      variant === 'primaryMain'
-        ? colorPalette.primaryMain
-        : colorPalette.primaryDarker,
+    fontFamily: e2nTheme.fontFamily.sansSerif,
+    color: theme.header.color,
   });
 }
 
 export const H1 = forwardRef<HTMLHeadingElement, HeadingProps>(
-  ({ children, variant, className }, ref) => {
-    const headingStyles = getHeadingStyles(variant);
+  ({ children, variant, className, theme = lightTheme }, ref) => {
+    const headingStyles = getHeadingStyles(theme, variant);
 
     return (
       <div
@@ -41,8 +45,8 @@ export const H1 = forwardRef<HTMLHeadingElement, HeadingProps>(
 H1.displayName = 'H1';
 
 export const H2 = forwardRef<HTMLHeadingElement, HeadingProps>(
-  ({ children, variant, className }, ref) => {
-    const headingStyles = getHeadingStyles(variant);
+  ({ children, variant, className, theme = lightTheme }, ref) => {
+    const headingStyles = getHeadingStyles(theme, variant);
 
     return (
       <div
@@ -62,8 +66,8 @@ export const H2 = forwardRef<HTMLHeadingElement, HeadingProps>(
 H2.displayName = 'H2';
 
 export const H3 = forwardRef<HTMLHeadingElement, HeadingProps>(
-  ({ children, variant, className }, ref) => {
-    const headingStyles = getHeadingStyles(variant);
+  ({ children, variant, className, theme = lightTheme }, ref) => {
+    const headingStyles = getHeadingStyles(theme, variant);
 
     return (
       <div
@@ -83,8 +87,8 @@ export const H3 = forwardRef<HTMLHeadingElement, HeadingProps>(
 H3.displayName = 'H3';
 
 export const H4 = forwardRef<HTMLHeadingElement, HeadingProps>(
-  ({ children, variant, className }, ref) => {
-    const headingStyles = getHeadingStyles(variant);
+  ({ children, variant, className, theme = lightTheme }, ref) => {
+    const headingStyles = getHeadingStyles(theme, variant);
 
     return (
       <div
@@ -104,8 +108,8 @@ export const H4 = forwardRef<HTMLHeadingElement, HeadingProps>(
 H4.displayName = 'H4';
 
 export const H5 = forwardRef<HTMLHeadingElement, HeadingProps>(
-  ({ children, variant, className }, ref) => {
-    const headingStyles = getHeadingStyles(variant);
+  ({ children, variant, className, theme = lightTheme }, ref) => {
+    const headingStyles = getHeadingStyles(theme, variant);
 
     return (
       <div
@@ -125,8 +129,8 @@ export const H5 = forwardRef<HTMLHeadingElement, HeadingProps>(
 H5.displayName = 'H5';
 
 export const H6 = forwardRef<HTMLHeadingElement, HeadingProps>(
-  ({ children, variant, className }, ref) => {
-    const headingStyles = getHeadingStyles(variant);
+  ({ children, variant, className, theme = lightTheme }, ref) => {
+    const headingStyles = getHeadingStyles(theme, variant);
 
     return (
       <div

@@ -12,7 +12,7 @@ const styles = css({
   height: '100%',
   position: 'relative',
   alignItems: 'center',
-  gap: spacingMap.xs,
+  gap: spacingMap.md,
 });
 
 export function MenuItemsContainer({ items }: MenuItemsContainerProps) {

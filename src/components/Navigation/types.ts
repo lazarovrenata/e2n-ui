@@ -1,4 +1,5 @@
 import { ComponentType, ReactNode } from 'react';
+import { Theme } from '../../theme';
 
 export type NavigationProps = {
   /** The label for the navigation component. */
@@ -11,4 +12,6 @@ export type NavigationProps = {
   renderProfile?: ComponentType;
   /** An optional React node to render the "settings" navigation item. */
   renderSettings?: ComponentType;
+  /** An optional theme object for making the navigation bar themeable. */
+  theme?: Theme;
 };

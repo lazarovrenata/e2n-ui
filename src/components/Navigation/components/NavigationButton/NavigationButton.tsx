@@ -5,7 +5,14 @@ import {
   ElementType,
   HTMLAttributes,
 } from 'react';
-import { theme, typography, spacingMap, colorPalette } from '../../../../theme';
+import {
+  theme as e2nTheme,
+  typography,
+  spacingMap,
+  colorPalette,
+  Theme,
+} from '../../../../theme';
+import { useTheme } from '../../theme';
 
 type NavigationButtonProps = {
   /** The display name of the menu item. */
@@ -16,33 +23,38 @@ type NavigationButtonProps = {
   component?: ComponentType<AllHTMLAttributes<HTMLElement>> | ElementType;
 } & HTMLAttributes<HTMLButtonElement>;
 
-export const styles = css({
-  display: 'flex',
-  alignItems: 'center',
-  position: 'relative',
-  justifyContent: 'center',
-  height: 'fit-content',
-  flexDirection: 'column',
-  backgroundColor: 'transparent',
-  border: 0,
-  borderRadius: theme.borderRadius.xs,
-  ...typography.navItem,
-  padding: spacingMap.xs,
-  cursor: 'pointer',
-  color: colorPalette.grey600,
-  transition: 'background-color, color 0.3s',
-  ':hover, :focus, :focus-visible': {
-    backgroundColor: colorPalette.primaryTransparent8,
-    color: colorPalette.primaryMain,
-    outline: 'none',
-  },
-});
+function getStyles(theme: Theme) {
+  return css({
+    display: 'flex',
+    alignItems: 'center',
+    position: 'relative',
+    justifyContent: 'center',
+    height: 'fit-content',
+    flexDirection: 'column',
+    backgroundColor: 'transparent',
+    border: 0,
+    borderRadius: e2nTheme.borderRadius.xs,
+    ...typography.navItem,
+    padding: spacingMap.xs,
+    cursor: 'pointer',
+    color: theme.text,
+    transition: 'background-color, color 0.3s',
+    ':hover, :focus, :focus-visible': {
+      backgroundColor: colorPalette.primaryTransparent8,
+      color: colorPalette.primaryMain,
+      outline: 'none',
+    },
+  });
+}
 
 export function NavigationButton({
   children,
   component: CustomComponent = 'button',
   ...otherProps
 }: NavigationButtonProps) {
+  const theme = useTheme();
+  const styles = getStyles(theme);
+
   return (
     <CustomComponent
       className={cx(styles, 'navigation-button')}
