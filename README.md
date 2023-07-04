@@ -12,6 +12,10 @@ The state of the library is work-in-progress. We are still working on the develo
 
 Run the following command to start Storybook and inspect the components locally:
 ```
+# Install dependencies
+yarn install
+
+# Start storybook
 yarn storybook
 ```
 
